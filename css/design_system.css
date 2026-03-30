@@ -1,0 +1,119 @@
+/********************************************************
+ * css/design_system.css
+ * Eingebunden in: index.html, profile.html, settings.html, login.html, register.html
+ *********************************************************/
+
+/* IM Primitives */
+:root {
+  /* Mode 1 */
+  /* color */
+  --color-blue-100: #c9eaff;
+  --color-blue-300: #83bade;
+  --color-blue-500: #5489ab;
+  --color-blue-700: #2f5b77;
+  --color-blue-900: #1b3545;
+  --color-grayscale-black: #000000;
+  --color-grayscale-white: #ffffff;
+  --color-orange-100: #ffb391;
+  --color-orange-300: #ff8f5e;
+  --color-orange-500: #ff6724;
+  --color-orange-700: #bf5020;
+  --color-orange-900: #803615;
+  --color-red-100: #ffabbe;
+  --color-red-300: #ff7898;
+  --color-red-500: #ff003c;
+  --color-red-700: #bf1f44;
+  --color-red-900: #661629;
+  --color-turquoise-100: #abfff7;
+  --color-turquoise-300: #78fff1;
+  --color-turquoise-500: #00d9c4;
+  --color-turquoise-700: #31998f;
+  --color-turquoise-900: #16665e;
+  /* string */
+  --type-family-body: "Roboto", sans-serif;
+  --type-family-heading: "Roboto Slab", serif;
+  --type-weight-body: Regular;
+  --type-weight-heading: Medium;
+  --type-weight-label: Medium;
+  --type-weight-label-s: Semibold;
+}
+/* IM Responsive */
+:root {
+  /* mobile */
+  /* number */
+  --border-radius-s: 0.5rem;
+  --border-radius-m: 1rem;
+  --border-radius-l: 2rem;
+  --border-width-s: 0.0625rem;
+  --border-width-m: 0.1875rem;
+  --border-width-l: 0.3125rem;
+  --spacing-xxxxs: 0.25rem;
+  --spacing-xxxs: 0.5rem;
+  --spacing-xxs: 0.75rem;
+  --spacing-xs: 1rem;
+  --spacing-s: 1.25rem;
+  --spacing-m: 1.5rem;
+  --spacing-l: 1.75rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 2.25rem;
+  --spacing-xxxl: 2.5rem;
+  --spacing-j: 3rem;
+  --spacing-xj: 3.5rem;
+  --spacing-xxj: 4rem;
+  --spacing-xxxj: 4.5rem;
+  --type-line-height-body-s: 1.0938rem;
+  --type-line-height-body: 1.25rem;
+  --type-line-height-h6: 1.625rem;
+  --type-line-height-h5: 1.75rem;
+  --type-line-height-body-l: 1.875rem;
+  --type-line-height-h4: 2rem;
+  --type-line-height-h3: 2.5rem;
+  --type-line-height-h2: 3rem;
+  --type-line-height-h1: 4rem;
+  --type-paragraph-spacing-body-s: var(--spacing-xxxs);
+  --type-paragraph-spacing-body: var(--spacing-xxs);
+  --type-paragraph-spacing-h6: var(--spacing-xxs);
+  --type-paragraph-spacing-body-l: var(--spacing-xs);
+  --type-paragraph-spacing-h5: var(--spacing-xs);
+  --type-paragraph-spacing-h3: var(--spacing-s);
+  --type-paragraph-spacing-h4: var(--spacing-s);
+  --type-paragraph-spacing-h1: var(--spacing-m);
+  --type-paragraph-spacing-h2: var(--spacing-m);
+  --type-size-body-s: 0.875rem;
+  --type-size-body: 1rem;
+  --type-size-h6: 1.25rem;
+  --type-size-body-l: 1.5rem;
+  --type-size-h5: 1.5rem;
+  --type-size-h4: 1.75rem;
+  --type-size-h3: 2rem;
+  --type-size-h2: 2.5rem;
+  --type-size-h1: 3rem;
+}
+/* IM Brand */
+:root {
+  /* light */
+  /* color */
+  --color-neutral-background: var(--color-blue-100);
+  --color-neutral-black: var(--color-grayscale-black);
+  --color-neutral-line: var(--color-blue-500);
+  --color-neutral-line-light: var(--color-blue-300);
+  --color-neutral-text: var(--color-blue-900);
+  --color-neutral-text-inverted: var(--color-grayscale-white);
+  --color-neutral-text-light: var(--color-blue-700);
+  --color-neutral-white: var(--color-grayscale-white);
+  --color-primary-default: var(--color-orange-500);
+  --color-primary-hover: var(--color-orange-300);
+  --color-primary-shadow: var(--color-orange-900);
+  --color-secondary-default: var(--color-turquoise-500);
+  --color-secondary-hover: var(--color-turquoise-300);
+  --color-secondary-shadow: var(--color-turquoise-900);
+  --color-status-error-background: var(--color-red-100);
+  --color-status-error-border: var(--color-red-700);
+  --color-status-error-text: var(--color-red-900);
+  --color-status-success-background: var(--color-turquoise-100);
+  --color-status-success-border: var(--color-turquoise-700);
+  --color-status-success-text: var(--color-turquoise-900);
+  --color-status-warning-background: var(--color-orange-100);
+  --color-status-warning-border: var(--color-orange-700);
+  --color-status-warning-text: var(--color-orange-900);
+}

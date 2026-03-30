@@ -1,0 +1,86 @@
+<!--------------------------------------------------------
+* profile.html
+* - Anzeige und Bearbeitung persönlicher Angaben (Name)
+* - Logout-Funktion (in profile.js implementiert)
+* - Verbindung zu einem Gerät mittels Geräte-Code
+* - Anzeige des Verbindungsstatus
+* - Navigation zur Historie, wann das Baby geweint hat (index.html) und zur Playlist (settings.html)
+
+* Client-seitiger Code: wird dem Client vom Server bereitgestellt und auf dem Client ausgeführt
+* eingebundenes JS: js/profile.js, ...
+* eingebundenes CSS: css/design_system.css, css/style.css, css/nav.css, css/profile.css
+* Haupt-Funktionalitäten:
+---------------------------------------------------------->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/design_system.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <body>
+    <a
+      href="profile.html"
+      class="profile-shortcut profile-shortcut-active"
+      aria-label="Profil"
+    >
+      <svg class="profile-shortcut-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+        />
+      </svg>
+      Profil
+    </a>
+
+    <div class="profile-container">
+      <h1>Profil</h1>
+
+      <div class="profile-section">
+        <h5>Persönliche Angaben</h5>
+
+        <div class="">
+          <label for="userName">Name</label>
+          <input type="text" id="userName" class="" value="..." />
+        </div>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+
+      <!-- Device connection section -->
+      <div class="profile-section">
+        <h5>Gerät verbinden</h5>
+
+        <div id="deviceStatus" class="device-status">
+          <!-- Filled by JS -->
+        </div>
+
+        <div id="connectForm" class="device-connect-form">
+          <label for="deviceCode">Geräte-Code</label>
+          <div class="device-input-row">
+            <input type="text" id="deviceCode" placeholder="z.B. 1234" />
+            <button onclick="connectDevice()" class="connect-btn">
+              Verbinden
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link"> Statistik </a>
+      <a href="settings.html" class="nav-link"> Playlist </a>
+    </nav>
+
+    <script src="js/profile.js"></script>
+  </body>
+</html>

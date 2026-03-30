@@ -1,0 +1,80 @@
+.nav {
+  /********************************************************
+ * css/nav.css
+ * Eingebunden in: index.html
+ *********************************************************/
+
+  width: 80%;
+  max-width: 720px;
+  height: 72px;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.nav-link {
+  flex: 1;
+  height: 60px;
+  text-align: center;
+  color: var(--color-neutral-text);
+  font-size: 16px;
+  font-family: var(--type-family-body);
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-neutral-white);
+  border-radius: 0;
+  box-shadow: 0px 2px 0px #83bade;
+}
+
+.nav-link:first-child {
+  border-radius: 16px 0 0 16px;
+}
+
+.nav-link:last-child {
+  border-radius: 0 16px 16px 0;
+}
+
+.nav-link-active {
+  color: var(--color-primary-default);
+}
+
+.profile-shortcut {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: white;
+  color: var(--color-neutral-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: var(--type-family-body);
+  font-weight: 500;
+  box-shadow: 0px 2px 0px #83bade;
+  z-index: 1000;
+}
+
+.profile-shortcut-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.profile-shortcut-active {
+  color: var(--color-primary-default);
+}

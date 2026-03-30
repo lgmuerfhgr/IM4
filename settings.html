@@ -1,0 +1,71 @@
+<!---------------------------------------------------------
+* settings.html
+- Anzeige einer Playlist-Tabelle mit Tracks 
+- für jedes Gerät könnnen individuelle Tracks ausgewählt werden
+- Navigation zwischen Sensordata und Playlist
+- Verlinkung zur Profilseite
+
+* Client-seitiger Code: wird dem Client vom Server bereitgestellt und auf dem Client ausgeführt
+* verlinkt in: index.html, profile.html
+* eingebundenes JS: js/settings.js
+* eingebundenes CSS: css/design_system.css, css/style.css, css/nav.css, css/scoreboard.css
+---------------------------------------------------------->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/design_system.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/scoreboard.css" />
+  </head>
+  <body>
+    <a href="profile.html" class="profile-shortcut" aria-label="Profil">
+      <svg class="profile-shortcut-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+        />
+      </svg>
+      Profil
+    </a>
+
+    <h1>Playlist</h1>
+    <div class="scoreboard-container">
+      <table class="scoreboard-table">
+        <thead>
+          <tr>
+            <th>Track</th>
+            <th>Ausgewählt</th>
+          </tr>
+        </thead>
+        <tbody id="tracks-body">
+          <!-- Data will be inserted here via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Shown when no device is connected -->
+    <div id="noDeviceState" class="empty-state" style="display: none">
+      <p>
+        Um die Playlist anzupassen, verbinde ein Babyphone auf der
+        <a href="profile.html"> Profilseite</a>.
+      </p>
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link"> Statistik </a>
+      <a href="settings.html" class="nav-link nav-link-active"> Playlist </a>
+    </nav>
+
+    <script src="js/settings.js"></script>
+  </body>
+</html>

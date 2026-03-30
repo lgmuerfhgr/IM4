@@ -1,0 +1,125 @@
+/*********************************************************
+ * css/profile.css
+ * Eingebunden in: profile.html
+ *********************************************************/
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-section {
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.activities-section {
+  padding: 20px;
+}
+
+.activities-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.activities-table th {
+  text-align: left;
+  color: var(--color-neutral-text);
+}
+
+.activities-table td {
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
+.score {
+  font-size: var(--type-size-body);
+  color: var(--color-status-success-text);
+  font-weight: var(--type-weight-label);
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: var(--color-status-error-background);
+  color: var(--color-status-error-text);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 1px solid var(--color-status-error-border);
+}
+
+.score-container {
+  text-align: right;
+  margin-right: 18px;
+}
+
+.device-status {
+  margin-bottom: 16px;
+}
+
+.device-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: var(--color-status-success-background);
+  border: 1px solid var(--color-status-success-border);
+  border-radius: 20px;
+  font-size: var(--type-size-body-s);
+  color: var(--color-status-success-text);
+  margin-bottom: 8px;
+}
+
+.device-badge-none {
+  background-color: var(--color-status-warning-background);
+  border-color: var(--color-status-warning-border);
+  color: var(--color-status-warning-text);
+}
+
+.disconnect-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 0 0 4px;
+  line-height: 1;
+  color: var(--color-status-error-text);
+}
+
+.device-connect-form {
+  margin-top: 8px;
+}
+
+.device-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.device-input-row input {
+  flex: 1;
+}
+
+.connect-btn {
+  padding: 8px 20px;
+  background-color: var(--color-primary-default);
+  color: var(--color-neutral-text-inverted);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--type-family-body);
+  font-weight: var(--type-weight-label);
+  white-space: nowrap;
+}
+
+.connect-btn:hover {
+  background-color: var(--color-primary-hover);
+}

@@ -1,12 +1,84 @@
-<!DOCTYPE html>
+<!--------------------------------------------------------
+* index.html
+- Falls nicht eingeloggt: Anzeige der login-Seite
+- Falls eingeloggt und Gerät verbunden: Anzeige einer Historie, wann das Baby geweint hat (-> DB-Tabelle "sensordata") mit Tabellen und Diagrammen (Chart.js)
+
+* Client-seitiger Code: wird dem Client vom Server bereitgestellt und auf dem Client ausgeführt
+* eingebundenes JS: js/index.js
+* eingebundenes CSS: css/design_system.css, css/style.css, css/nav.css, css/scoreboard.css
+---------------------------------------------------------->
+
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Das ist eine Website</title>
-</head>
-<body>
-    Halo Lou
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nestfunk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/design_system.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/scoreboard.css" />
+  </head>
+  <body>
+    <a href="profile.html" class="profile-shortcut" aria-label="Profil">
+      <svg class="profile-shortcut-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+        />
+      </svg>
+      Profil
+    </a>
+
+    <h1>Nestfunk</h1>
+    <h3>Wann hat das Baby geweint?</h3>
+
+    <div class="chart-container">
+      <canvas id="sensordata"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="sensordata-time"></canvas>
+    </div>
+
+    <div class="scoreboard-container">
+      <table class="scoreboard-table">
+        <thead>
+          <tr>
+            <th>Start</th>
+            <th>Ende</th>
+            <th>Dauer (min)</th>
+          </tr>
+        </thead>
+        <tbody id="sensordata-body">
+          <!-- Data will be inserted here via JavaScript in index.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Shown only when user has no sensordata entries -->
+    <div id="emptyState" class="empty-state" style="display: none">
+      <p>
+        Keine Einträge vorhanden. Verbinde ein Babyphone auf der
+        <a href="profile.html">Profil-Seite</a>
+        und / oder fülle die Datenbank mit Demo-Einträgen.
+      </p>
+      <!-- <button id="seedBtn" onclick="seedDatabase()" class="seed-btn-small">
+        Demo-Daten erstellen
+      </button> -->
+    </div>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link nav-link-active"> Statistik </a>
+      <a href="settings.html" class="nav-link"> Playlist </a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <script src="js/index.js"></script>
+  </body>
 </html>

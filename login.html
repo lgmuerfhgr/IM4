@@ -1,0 +1,67 @@
+<!----------------------------------------------------
+* login.html
+- Anzeige einer Login-Seite
+- Eingabefelder für E-Mail und Passwort
+- Link zur Registrierung
+
+* Client-seitiger Code: wird dem Client vom Server bereitgestellt und auf dem Client ausgeführt
+* eingebundenes JS: js/login.js
+* eingebundenes CSS: css/design_system.css, css/style.css, css/login_register.css
+------------------------------------------------------>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nestfunk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/design_system.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login_register.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Brand Header -->
+      <div class="brand">
+        <h1 class="brand-title">Nestfunk</h1>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="email" class="">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-input"
+            placeholder=""
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password" class="">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-input"
+            placeholder=""
+            required
+          />
+        </div>
+        <button type="submit" class="form-button">Anmelden</button>
+        <p class="form-link">
+          Noch kein Account?
+          <a href="register.html">Jetzt registrieren</a>.
+        </p>
+      </form>
+    </div>
+
+    <script src="js/login.js"></script>
+  </body>
+</html>
