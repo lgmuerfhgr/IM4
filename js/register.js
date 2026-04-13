@@ -17,15 +17,15 @@ document
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const password = document.getElementById("password").value.trim(); /* value = Inputfelder; Trim = abschneiden von Leerzeichen am Ende*/
 
-    try {
+    try { /* await = warte bis antwort kommt; fetch = aufrufen von URL */
       const response = await fetch("api/auth/register.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ name, email, password }),
       });
-      const result = await response.json();
+      const result = await response.json(); /* wartet die Antwort ab (PHP) wandelt es in json um */
 
       if (result.status === "success") {
         alert("Registration successful! You can now log in.");
