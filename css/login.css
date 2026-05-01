@@ -4,63 +4,49 @@ body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#f7ebe9;
-    color:white
+    color:#060606
 }
 
-.loginpage{
+    
+.home{
     min-height:100vh;
     display:grid;
-    place-items:center;
-    position:relative;
-    overflow:hidden
-}
-
-.card{
-    width:285px;
-    min-height:405px;
-    background:#df62a9;
-    border-radius:14px;
-    padding:58px 38px 35px;
+    place-content:center;
+    justify-items:center;
     text-align:center;
-    position:relative;
-    display:grid;
-    gap:18px;
-    align-content:start
-}
-
-.close{
-    position:absolute;
-    right:16px;
-    top:10px;
-    color:white;
-    text-decoration:none;
-    font-size:34px;
-    font-weight:900
+    gap:14px
 }
 
 h1{
-    font-size:22px;
-    margin:0 0 18px;
+    font-size:clamp(28px,5vw,42px);
+    line-height:1.05;
+    margin:0 0 4px;
     font-weight:900
 }
-    
-input{
-    border:0;
-    border-radius:99px;
-    padding:11px 18px;
-    font-weight:700
+
+.deko{
+    font-size:48px;
+    letter-spacing:12px;
+    margin:4px 0 8px
 }
 
-button{
-    border:0;
-    border-radius:4px;
-    background:#ff4b2b;
+.btn{
+    width:190px;
+    padding:14px 20px;
+    border-radius:7px;
     color:white;
-    padding:14px;
-    font-weight:900;
-    cursor:pointer
+    text-decoration:none;
+    font-weight:800
 }
-    
-button:hover{
+
+.pink{
+    background:#df62a9
+}
+
+.orange{
+    background:#ff4b2b
+}
+
+.btn:hover{
     filter:brightness(.95)
 }
