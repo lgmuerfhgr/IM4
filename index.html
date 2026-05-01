@@ -34,36 +34,12 @@
       </svg>
       Profil
     </a>
+    <h1>Deine meist gehörten<br />Geschichten</h1>
 
-    <h1>Deine meist gehörten Geschichten</h1>
-
-    <div class="chart-container">
-      <canvas id="sensordata"></canvas>
-    </div>
-
-    <div class="chart-container">
-      <canvas id="sensordata-time"></canvas>
-    </div>
-
-    <div class="scoreboard-container">
-      <table class="scoreboard-table">
-        <thead>
-          <tr>
-            <th>Start</th>
-            <th>Ende</th>
-            <th>Dauer (min)</th>
-          </tr>
-        </thead>
-        <tbody id="sensordata-body">
-          <!-- Data will be inserted here via JavaScript in index.js -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Shown only when user has no sensordata entries -->
+<!-- Shown only when user has no sensordata entries -->
     <div id="emptyState" class="empty-state" style="display: none">
       <p>
-        Keine Einträge vorhanden. Verbinde ein Babyphone auf der
+        Keine Einträge vorhanden. Stelle ein Tier auf die Box. Deine Geschichten werden freigeschaltet.
         <a href="profile.html">Profil-Seite</a>
         und / oder fülle die Datenbank mit Demo-Einträgen.
       </p>
@@ -71,11 +47,6 @@
         Demo-Daten erstellen
       </button> -->
     </div>
-
-    <nav class="nav">
-      <a href="index.html" class="nav-link nav-link-active"> Statistik </a>
-      <a href="settings.html" class="nav-link"> Playlist </a>
-    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <script src="js/index.js"></script>
