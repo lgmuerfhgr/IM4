@@ -22,7 +22,7 @@ async function checkAuth() {
 
     // If server returns 401:
     if (response.status === 401) {
-      window.location.href = "login.html";
+      window.location.href = "startseite.html";
       return false;
     }
 
@@ -32,13 +32,13 @@ async function checkAuth() {
 
     // Possibly check if result has an error:
     if (result.error || !result.email) {
-      window.location.href = "login.html";
+      window.location.href = "startseite.html";
       return false;
     }
     return true;
   } catch (error) {
     console.error("Auth check failed:", error);
-    window.location.href = "login.html";
+    window.location.href = "startseite.html";
     return false;
   }
 }
