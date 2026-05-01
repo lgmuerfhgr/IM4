@@ -138,7 +138,7 @@ async function disconnectDevice(deviceId) {
 async function logout() {
   try {
     await fetch("api/auth/logout.php");
-    window.location.href = "login.html";
+    window.location.href = "startseite.html";
   } catch (error) {
     console.error("Logout failed:", error);
     alert("Logout failed");
