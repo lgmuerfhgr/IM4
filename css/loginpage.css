@@ -55,7 +55,7 @@ input{
 button{
     border:0;
     border-radius:4px;
-    background:var(--color_orange);
+    background-color: var(--color-orange);
     color:white;
     padding:14px;
     font-weight:900;
