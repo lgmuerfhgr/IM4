@@ -3,8 +3,8 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#f7ebe9;
-    color:#060606
+    background:var(--color-light-pink);
+    color: var(--color-black);
 }
 
     
@@ -14,39 +14,44 @@ body{
     place-content:center;
     justify-items:center;
     text-align:center;
-    gap:14px
+    gap:14px;
 }
 
 h1{
     font-size:clamp(28px,5vw,42px);
     line-height:1.05;
     margin:0 0 4px;
-    font-weight:900
+    font-weight:900;
 }
 
 .deko{
     font-size:48px;
     letter-spacing:12px;
-    margin:4px 0 8px
+    margin:4px 0 8px;
 }
 
-.btn{
-    width:190px;
-    padding:14px 20px;
-    border-radius:7px;
-    color:white;
-    text-decoration:none;
-    font-weight:800
+.button-register,
+.button-login {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 190px;
+  padding: 14px 20px;
+  border-radius: 7px;
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 800;
 }
 
-.pink{
-    background:#df62a9
+.button-register {
+  background: var(--color-pink);
 }
 
-.orange{
-    background:#ff4b2b
+.button-login {
+  background: var(--color-orange);
 }
 
-.btn:hover{
-    filter:brightness(.95)
+.button-register:hover,
+.button-login:hover {
+    filter:brightness(.95);
 }

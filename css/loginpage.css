@@ -3,7 +3,7 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:#f7ebe9;
+    background:var(--color-white);
     color:white
 }
 
@@ -18,14 +18,15 @@ body{
 .card{
     width:285px;
     min-height:405px;
-    background:#df62a9;
+    background:var(--color-pink);
     border-radius:14px;
     padding:58px 38px 35px;
     text-align:center;
     position:relative;
     display:grid;
     gap:18px;
-    align-content:start
+    align-content:start;
+    z-index:1
 }
 
 .close{
@@ -54,7 +55,7 @@ input{
 button{
     border:0;
     border-radius:4px;
-    background:#ff4b2b;
+    background:var(--color_orange);
     color:white;
     padding:14px;
     font-weight:900;

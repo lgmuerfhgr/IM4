@@ -5,30 +5,13 @@
 
 /* IM Primitives */
 :root {
-  /* Mode 1 */
   /* color */
-  --color-blue-100: #c9eaff;
-  --color-blue-300: #83bade;
-  --color-blue-500: #5489ab;
-  --color-blue-700: #2f5b77;
-  --color-blue-900: #1b3545;
-  --color-grayscale-black: #000000;
-  --color-grayscale-white: #ffffff;
-  --color-orange-100: #ffb391;
-  --color-orange-300: #ff8f5e;
-  --color-orange-500: #ff6724;
-  --color-orange-700: #bf5020;
-  --color-orange-900: #803615;
-  --color-red-100: #ffabbe;
-  --color-red-300: #ff7898;
-  --color-red-500: #ff003c;
-  --color-red-700: #bf1f44;
-  --color-red-900: #661629;
-  --color-turquoise-100: #abfff7;
-  --color-turquoise-300: #78fff1;
-  --color-turquoise-500: #00d9c4;
-  --color-turquoise-700: #31998f;
-  --color-turquoise-900: #16665e;
+ --color-pink: #df62a9;
+ --color-orange: #ff4b2b;
+ --color-blue:#4843df;
+ --color-white: #f7ebe9;
+ --color-black: #060606;
+
   /* string */
   --type-family-body: "Roboto", sans-serif;
   --type-family-heading: "Roboto Slab", serif;
