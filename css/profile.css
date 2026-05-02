@@ -3,85 +3,133 @@
  * Eingebunden in: profile.html
  *********************************************************/
 
-.profile-container {
-  max-width: 600px;
-  margin: 0 auto;
+* {box-sizing: border-box;}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:var(--color-white-pink);
+    color: white;
 }
 
-.profile-header-row {
+header {
+  height: 110px;
+  padding: 32px 48px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.nav-button {
+  height: 50px;
+  padding: 0 28px;
+  display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  gap: 16px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 4px 0 var(--color-blue);
+}
+
+.nav-button svg {
+  width: 36px;
+  height: 36px;
+  fill: black;
+}
+
+.profile-container {
+  width: 285px;
+  min-height: 405px;
+  margin: 0 auto;
+  margin-top: 90px;
+  background: var(--color-blue);
+  border-radius: 14px;
+  padding: 58px 38px 35px;
+  text-align: center;
+  position: relative;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  z-index: 1;
+}
+
+.profile-container h1 {
+  font-size: 22px;
+  margin: 0 0 18px;
+  font-weight: 900;
 }
 
 .profile-section {
-  padding: 20px;
-  margin-bottom: 30px;
+  padding: 0;
+  margin-bottom: 12px;
+  display: grid;
+  gap: 14px;
 }
 
-.activities-section {
-  padding: 20px;
+.profile-section h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
 }
 
-.activities-table {
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-align: left;
+}
+
+input {
   width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+  border: 0;
+  border-radius: 99px;
+  padding: 11px 18px;
+  font-weight: 700;
 }
 
-.activities-table th {
-  text-align: left;
-  color: var(--color-neutral-text);
+button {
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--color-orange);
+  color: white;
+  padding: 14px;
+  font-weight: 900;
+  cursor: pointer;
 }
 
-.activities-table td {
-  padding-bottom: 12px;
-  padding-top: 12px;
-}
-
-.score {
-  font-size: var(--type-size-body);
-  color: var(--color-status-success-text);
-  font-weight: var(--type-weight-label);
+button:hover {
+  filter: brightness(.95);
 }
 
 .logout-btn {
-  padding: 8px 16px;
-  background-color: var(--color-status-error-background);
-  color: var(--color-status-error-text);
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  border: 1px solid var(--color-status-error-border);
-}
-
-.score-container {
-  text-align: right;
-  margin-right: 18px;
+  width: 100%;
+  margin-top: 4px;
 }
 
 .device-status {
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .device-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 8px 14px;
-  background-color: var(--color-status-success-background);
-  border: 1px solid var(--color-status-success-border);
-  border-radius: 20px;
-  font-size: var(--type-size-body-s);
-  color: var(--color-status-success-text);
+  background-color: white;
+  border-radius: 99px;
+  font-size: 13px;
+  color: var(--color-blue);
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
 .device-badge-none {
-  background-color: var(--color-status-warning-background);
-  border-color: var(--color-status-warning-border);
-  color: var(--color-status-warning-text);
+  background-color: white;
+  color: var(--color-blue);
 }
 
 .disconnect-btn {
@@ -91,17 +139,16 @@
   font-size: 16px;
   padding: 0 0 0 4px;
   line-height: 1;
-  color: var(--color-status-error-text);
+  color: var(--color-orange);
 }
 
 .device-connect-form {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .device-input-row {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
+  display: grid;
+  gap: 10px;
 }
 
 .device-input-row input {
@@ -109,17 +156,8 @@
 }
 
 .connect-btn {
-  padding: 8px 20px;
-  background-color: var(--color-primary-default);
-  color: var(--color-neutral-text-inverted);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-family: var(--type-family-body);
-  font-weight: var(--type-weight-label);
+  width: 100%;
+  background-color: var(--color-orange);
+  color: white;
   white-space: nowrap;
-}
-
-.connect-btn:hover {
-  background-color: var(--color-primary-hover);
 }

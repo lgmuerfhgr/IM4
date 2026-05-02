@@ -3,7 +3,7 @@
 body{
     margin:0;
     font-family:Arial,sans-serif;
-    background:var(--color-light-pink);
+    background:var(--color-white-pink);
     color: var(--color-black);
 }
 
@@ -38,7 +38,7 @@ h1{
   width: 190px;
   padding: 14px 20px;
   border-radius: 7px;
-  color: var(--color-white);
+  color: var(--color-white-pink);
   text-decoration: none;
   font-weight: 800;
 }
