@@ -51,6 +51,14 @@ h1 {
   font-weight: 800;
 }
 
+h2 {
+  margin: 0 0 56px;
+  color: var(--color-blue);
+  font-size: 20px;
+  line-height: 1.08;
+  font-weight: 800;
+}
+
 .story-list {
   display: flex;
   flex-direction: column;
