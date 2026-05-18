@@ -19,12 +19,30 @@
   </header>
 
   <main>
-    <h1>Leo der Löwe</h1>
-    <h2> Leo war ein junger Löwe, etc etc etc</h2>
-      <button><span>▷</span>Abspielen</button>
-    </div>
+    <h1 id="storyTitle">...</h1>
+    <h2 id="storyText"></h2>
+
+    <audio id="storyAudio" controls style="width:100%; margin-top:24px;">
+      Dein Browser unterstützt kein Audio-Element.
+    </audio>
   </main>
 
-  <script src="js/index.js"></script>
+<script src="js/story.js"></script>
+
+  <main>
+    <h1 id="storyTitle">...</h1>
+    <h2 id="storyText"></h2>
+
+    <audio id="storyAudio" style="display:none;">
+     Dein Browser unterstützt kein Audio-Element.
+    </audio>
+
+    <button id="playButton" type="button">
+     <span>▷</span>Abspielen
+    </button>
+  </main>
+
+  <script src="js/story.js"></script>
+
 </body>
 </html>

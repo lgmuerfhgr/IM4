@@ -1,12 +1,192 @@
 /***************************************************************
  * js/profile.js
+ * - Laden und Aktualisieren des Benutzerprofils
+ * - Anzeige und Verbindung von Boxen über serial_id
+ ***************************************************************/
+
+async function checkAuth() {
+  try {
+    const response = await fetch("api/auth/auth.php", {
+      credentials: "include",
+    });
+
+    if (response.status === 401) {
+      window.location.href = "login.html";
+      return false;
+    }
+
+    const result = await response.json();
+
+    if (result.error || !result.email) {
+      window.location.href = "login.html";
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Auth check failed:", error);
+    window.location.href = "login.html";
+    return false;
+  }
+}
+
+async function loadProfile() {
+  const isAuthorized = await checkAuth();
+  if (!isAuthorized) return;
+
+  try {
+    const response = await fetch("api/profile/read_profile.php", {
+      credentials: "include",
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      console.error("Error loading profile:", data.error);
+      return;
+    }
+
+    document.getElementById("userName").value = data.user.name || "";
+    renderDevices(data.devices || []);
+  } catch (error) {
+    console.error("Error loading profile:", error);
+  }
+}
+
+function renderDevices(devices) {
+  const statusEl = document.getElementById("deviceStatus");
+
+  if (devices.length === 0) {
+    statusEl.innerHTML =
+      '<span class="device-badge device-badge-none">Keine Box verbunden</span>';
+    return;
+  }
+
+  statusEl.innerHTML = devices
+    .map(
+      (d) =>
+        `<div class="device-badge">
+          Box: ${d.serial_id}
+          <button class="disconnect-btn" onclick="disconnectDevice(${d.id})" title="Trennen">&times;</button>
+        </div>`,
+    )
+    .join("");
+}
+
+async function connectDevice() {
+  const input = document.getElementById("deviceCode");
+  const code = input.value.trim();
+
+  if (!code) {
+    alert("Bitte einen Geräte-Code eingeben");
+    return;
+  }
+
+  try {
+    const response = await fetch("api/device/connect_device.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ serial_id: code }),
+    });
+
+    const result = await response.json();
+
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
+
+    input.value = "";
+    alert("Box erfolgreich verbunden");
+    loadProfile();
+  } catch (error) {
+    console.error("Error connecting device:", error);
+    alert("Fehler beim Verbinden der Box");
+  }
+}
+
+async function disconnectDevice(deviceId) {
+  if (!confirm("Box wirklich trennen?")) return;
+
+  try {
+    const response = await fetch("api/device/disconnect_device.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ device_id: deviceId }),
+    });
+
+    const result = await response.json();
+
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
+
+    loadProfile();
+  } catch (error) {
+    console.error("Error disconnecting device:", error);
+    alert("Fehler beim Trennen der Box");
+  }
+}
+
+async function logout() {
+  try {
+    await fetch("api/auth/logout.php", {
+      credentials: "include",
+    });
+
+    window.location.href = "login.html";
+  } catch (error) {
+    console.error("Logout failed:", error);
+    alert("Logout fehlgeschlagen");
+  }
+}
+
+async function updateName() {
+  const nameInput = document.getElementById("userName");
+  const newName = nameInput.value.trim();
+
+  if (!newName) {
+    alert("Name darf nicht leer sein");
+    return;
+  }
+
+  try {
+    const response = await fetch("api/profile/update_profile.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ name: newName }),
+    });
+
+    const result = await response.json();
+
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
+  } catch (error) {
+    console.error("Error updating name:", error);
+    alert("Name konnte nicht gespeichert werden");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("userName").addEventListener("change", updateName);
+  loadProfile();
+});
+
+/***************************************************************
+ * js/profile.js
  * - Laden und Aktualisieren des Benutzerprofils (profile.html)
  * - Anzeige, Verbindung und Trennung von Geräten
  *
  * Client-seitiger Code: wird dem Client vom Server bereitgestellt und auf dem Client ausgeführt
  * eingebunden in: profile.html
  * Server-Interaktion mit: api/auth/auth.php
- ***************************************************************/
+ 
 
 async function checkAuth() {
   try {
@@ -183,3 +363,4 @@ document.getElementById("userName").addEventListener("change", updateName);
 
 // Load profile when page loads
 document.addEventListener("DOMContentLoaded", loadProfile);
+***************************************************************/
