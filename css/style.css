@@ -17,24 +17,30 @@ header {
 }
 
 .nav-button {
-  height: 50px;
-  padding: 0 28px;
+  position: absolute;
+  top: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
-  background: white;
-  color: black;
   text-decoration: none;
-  font-size: 20px;
-  font-weight: 800;
-  border-radius: 0 0 28px 28px;
-  box-shadow: 0 4px 0 var(--color-blue);
 }
 
-.nav-button svg {
-  width: 36px;
-  height: 36px;
-  fill: black;
+/* linker Button */
+.nav-left {
+  left: 20px;
+}
+
+/* rechter Button */
+.nav-right {
+  right: 20px;
+}
+
+/* Icons */
+.nav-button img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
 }
 
 main {
