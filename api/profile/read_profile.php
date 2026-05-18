@@ -3,12 +3,12 @@
 /*********************************************************
 * api/profile/read_profile.php
 * - Liest Benutzername aus users
-* - Listet verbundene Boxen aus boxes über user_id
+* - Listet verbundene Boxen aus boxes
+* - Listet verknüpfte Figuren aus user_figures und figures
 * - Gibt alle Daten als JSON zurück
-* - vorausgesetzt: Benutzer-Authentifizierung ist gegeben / Session ist aktiv
 *
 * verwendete Datenbanktabellen:
-* users, boxes
+* users, boxes, user_figures, figures, animals
 *********************************************************/
 
 header('Content-Type: application/json');
@@ -23,7 +23,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 try {
-    // Benutzerinformationen laden
     $userQuery = "SELECT id, email, name FROM users WHERE id = ?";
     $stmt = $pdo->prepare($userQuery);
     $stmt->execute([$_SESSION['user_id']]);
@@ -35,19 +34,38 @@ try {
         exit();
     }
 
-    // Verbundene Boxen laden
-    $boxesQuery = "SELECT id, serial_id
-                   FROM boxes
-                   WHERE user_id = ?
-                   ORDER BY id ASC";
+    $boxesQuery = "
+        SELECT id, serial_id
+        FROM boxes
+        WHERE user_id = ?
+        ORDER BY id ASC
+    ";
 
     $stmt = $pdo->prepare($boxesQuery);
     $stmt->execute([$_SESSION['user_id']]);
     $devices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $figuresQuery = "
+        SELECT
+            f.id,
+            f.serial_id,
+            f.animal_id,
+            a.name AS animal_name
+        FROM user_figures uf
+        INNER JOIN figures f ON f.id = uf.figure_id
+        LEFT JOIN animals a ON a.id = f.animal_id
+        WHERE uf.user_id = ?
+        ORDER BY a.name ASC, f.serial_id ASC
+    ";
+
+    $stmt = $pdo->prepare($figuresQuery);
+    $stmt->execute([$_SESSION['user_id']]);
+    $figures = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     echo json_encode([
         'user' => $userInfo,
-        'devices' => $devices
+        'devices' => $devices,
+        'figures' => $figures
     ]);
 } catch (PDOException $e) {
     http_response_code(500);
@@ -57,7 +75,6 @@ try {
 }
 
 ?>
-
 /*********************************************************
 * api/profile/read_profile.php
 * - Liest Benutzername aus users

@@ -2,6 +2,7 @@
  * js/profile.js
  * - Laden und Aktualisieren des Benutzerprofils
  * - Anzeige und Verbindung von Boxen über serial_id
+ * - Anzeige verknüpfter Figuren
  ***************************************************************/
 
 async function checkAuth() {
@@ -17,7 +18,7 @@ async function checkAuth() {
 
     const result = await response.json();
 
-    if (result.error || !result.email) {
+    if (result.error) {
       window.location.href = "login.html";
       return false;
     }
@@ -40,6 +41,7 @@ async function loadProfile() {
     });
 
     const data = await response.json();
+    console.log("Loaded profile:", data);
 
     if (data.error) {
       console.error("Error loading profile:", data.error);
@@ -47,7 +49,9 @@ async function loadProfile() {
     }
 
     document.getElementById("userName").value = data.user.name || "";
+
     renderDevices(data.devices || []);
+    renderFigures(data.figures || []);
   } catch (error) {
     console.error("Error loading profile:", error);
   }
@@ -55,6 +59,11 @@ async function loadProfile() {
 
 function renderDevices(devices) {
   const statusEl = document.getElementById("deviceStatus");
+
+  if (!statusEl) {
+    console.error("Element #deviceStatus wurde in profile.html nicht gefunden");
+    return;
+  }
 
   if (devices.length === 0) {
     statusEl.innerHTML =
@@ -73,12 +82,37 @@ function renderDevices(devices) {
     .join("");
 }
 
+function renderFigures(figures) {
+  const statusEl = document.getElementById("figureStatus");
+
+  if (!statusEl) {
+    console.error("Element #figureStatus wurde in profile.html nicht gefunden");
+    return;
+  }
+
+  if (figures.length === 0) {
+    statusEl.innerHTML =
+      '<span class="device-badge device-badge-none">Keine Figur verbunden</span>';
+    return;
+  }
+
+  statusEl.innerHTML = figures
+    .map((figure) => {
+      const label = figure.animal_name
+        ? `${figure.animal_name} (${figure.serial_id})`
+        : figure.serial_id;
+
+      return `<div class="device-badge">Figur: ${label}</div>`;
+    })
+    .join("");
+}
+
 async function connectDevice() {
   const input = document.getElementById("deviceCode");
   const code = input.value.trim();
 
   if (!code) {
-    alert("Bitte einen Geräte-Code eingeben");
+    alert("Bitte einen Box-Code eingeben");
     return;
   }
 
@@ -167,6 +201,8 @@ async function updateName() {
       alert(result.error);
       return;
     }
+
+    console.log("Name updated:", result);
   } catch (error) {
     console.error("Error updating name:", error);
     alert("Name konnte nicht gespeichert werden");

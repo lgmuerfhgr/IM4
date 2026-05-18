@@ -1,28 +1,23 @@
 <!--------------------------------------------------------
 * profile.html
 * - Anzeige und Bearbeitung persönlicher Angaben (Name)
-* - Logout-Funktion (in profile.js implementiert)
-* - Verbindung zu einem Gerät mittels Geräte-Code
-* - Anzeige des Verbindungsstatus
-* - Navigation zur Historie, wann das Baby geweint hat (index.html) und zur Playlist (settings.html)
-
-* Client-seitiger Code: wird dem Client vom Server bereitgestellt und auf dem Client ausgeführt
-* eingebundenes JS: js/profile.js, ...
-* eingebundenes CSS: css/design_system.css, css/style.css, css/nav.css, css/profile.css
-* Haupt-Funktionalitäten:
+* - Logout-Funktion
+* - Verbindung zu einer Box mittels serial_id
+* - Anzeige aller verbundenen Boxen
+* - Anzeige aller verknüpften Figuren
 ---------------------------------------------------------->
 
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profil</title>
-    <link rel="stylesheet" href="css/design.css" />
-    <link rel="stylesheet" href="css/profile.css" />
-  </head>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profil</title>
+  <link rel="stylesheet" href="css/design.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
 
- <body>
+<body>
   <header>
     <a href="index.html" class="nav-button">
       Geschichten
@@ -36,34 +31,44 @@
       <div class="profile-section">
         <h5>Persönliche Angaben</h5>
 
-        <div class="">
+        <div>
           <label for="userName">Name</label>
-          <input type="text" id="userName" class="" value="..." />
+          <input type="text" id="userName" value="..." />
         </div>
+
         <button onclick="logout()" class="logout-btn">Logout</button>
       </div>
 
-      <!-- Device connection section -->
       <div class="profile-section">
-        <h5>Gerät verbinden</h5>
+        <h5>Box verbinden</h5>
 
         <div id="deviceStatus" class="device-status">
-          <!-- Filled by JS -->
+          <!-- Wird durch JS gefüllt -->
         </div>
 
         <div id="connectForm" class="device-connect-form">
-          <label for="deviceCode">Geräte-Code</label>
+          <label for="deviceCode">Box-Code</label>
+
           <div class="device-input-row">
-            <input type="text" id="deviceCode" placeholder="z.B. 1234" />
+            <input type="text" id="deviceCode" placeholder="z.B. BOX001" />
+
             <button onclick="connectDevice()" class="connect-btn">
               Verbinden
             </button>
           </div>
         </div>
       </div>
+
+      <div class="profile-section">
+        <h5>Deine Figuren</h5>
+
+        <div id="figureStatus" class="device-status">
+          <!-- Wird durch JS gefüllt -->
+        </div>
+      </div>
     </div>
   </main>
 
   <script src="js/profile.js"></script>
-  </body>
+</body>
 </html>

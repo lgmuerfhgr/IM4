@@ -5,7 +5,6 @@
 * - Aktualisiert den Benutzernamen in users
 * - Empfängt JSON-Daten mit name
 * - Gibt JSON-Antwort zurück
-* - vorausgesetzt: Benutzer-Authentifizierung ist gegeben / Session ist aktiv
 *
 * verwendete Datenbanktabellen:
 * users

@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . "/../_bootstrap.php";
+header('Content-Type: application/json');
+include_once '../../system/config.php';
+
+session_start();
 
 $userId = requireLogin();
 $data = getJsonInput();
