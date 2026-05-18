@@ -1,4 +1,52 @@
 <?php
+require_once __DIR__ . "/../_bootstrap.php";
+
+$userId = requireLogin();
+$data = getJsonInput();
+
+$serialId = trim($data["serial_id"] ?? "");
+
+if ($serialId === "") {
+    http_response_code(400);
+    echo json_encode(["error" => "Bitte eine Serial-ID eingeben"]);
+    exit;
+}
+
+$stmt = $pdo->prepare("
+    SELECT id, serial_id, user_id
+    FROM boxes
+    WHERE serial_id = ?
+    LIMIT 1
+");
+$stmt->execute([$serialId]);
+$box = $stmt->fetch();
+
+if (!$box) {
+    http_response_code(404);
+    echo json_encode(["error" => "Diese Box wurde nicht gefunden"]);
+    exit;
+}
+
+if (!empty($box["user_id"]) && (int) $box["user_id"] !== $userId) {
+    http_response_code(409);
+    echo json_encode(["error" => "Diese Box ist bereits mit einem anderen Profil verbunden"]);
+    exit;
+}
+
+$stmt = $pdo->prepare("
+    UPDATE boxes
+    SET user_id = ?
+    WHERE id = ?
+");
+$stmt->execute([$userId, $box["id"]]);
+
+echo json_encode([
+    "success" => true,
+    "box" => [
+        "id" => (int) $box["id"],
+        "serial_id" => $box["serial_id"],
+    ],
+]);
 
 /*********************************************************
 * api/device/connect_device.php
@@ -10,7 +58,7 @@
 
 * Server-seitiger Code: wird auf dem Server ausgeführt (direkter API-Endpunkt)
 * verwendete Datenbanktabellen: devices, user_has_device, device_tracks, tracks
-*********************************************************/
+
 
 
 header('Content-Type: application/json');
@@ -77,3 +125,4 @@ try {
     echo json_encode(['error' => 'Failed to connect device: ' . $e->getMessage()]);
 }
 ?>
+*********************************************************/
