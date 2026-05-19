@@ -1,71 +1,84 @@
-/******************************************************************
- * 09_NFC_RFID-Reader.ino
- * Read NFC tags and RFID cards (I2C mode)
- * turn on I2C mode by switching physical switches on the PN532 to 1 / 0 (I2C)
- * Anschluss:
- * PN532: SDA <-> ESP32-C6: GPIO 6
- * PN532: SCL <-> ESP32-C6: GPIO 7
- * PN532: Vcc <-> ESP32-C6: 3.3V
- * PN532: GND <-> ESP32-C6: GND
- * Installiere Library "Adafruit_PN532" von Adafruit
- * GitHub: https://github.com/Interaktive-Medien/im_physical_computing/blob/main/09_Sensoren_testen/09_NFC_RFID-Reader/09_NFC_RFID-Reader.ino
-********************************************************************/
+/************************************************************************************
+ * Kap. 13: Sende Sensordaten an Server
+ * mc.ino
+ * Installiere Library "Arduino_JSON" by Arduino
+ * Sensordaten sammeln und per HTTP POST Request an Server schicken (-> an load.php).
+ * load.php schreibt die Werte dann in die Datenbank
+ * Beachte: Passe den Pfad zur load.php in const char* serverURL auf deinen eigenen an.
+ * Gib SSID und Passwort deines WLANs an.
+ * Ersetze den Block "Sensor auslesen" durch tatsächliche Sensorwerte.
+ * GitHub: https://github.com/Interaktive-Medien/im_physical_computing/tree/main/13_MC2DB/mc/mc.ino
+ ************************************************************************************/
 
-#include <Wire.h>
-#include <Adafruit_PN532.h>
 
-// I2C Pins definieren
-#define SDA_PIN 6
-#define SCL_PIN 7
+#include <WiFi.h>
+#include <HTTPClient.h>
+#include <Arduino_JSON.h>
 
-// IRQ und RESET Pins definieren – werden vom PN532-Modul NICHT verwendet bei I2C, aber Bibliothek erwartet sie
-#define PN532_IRQ   (2)
-#define PN532_RESET (3)
+int sensorPin = 7;
+int ledPin = BUILTIN_LED;
 
-// Konstruktor mit IRQ, RESET und Wire
-Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET, &Wire);
+int sensorState = 0;
+int prev_sensorState = 0;
 
-void setup(void) {
-  Serial.begin(115200);
-  while (!Serial) delay(10);
+const char* ssid     = "trinkergarden";                    // WLAN
+const char* pass     = "strenggeheim";             // WLAN
 
-  Serial.println("PN532 NFC Reader Test (ESP32-C6, I2C)");
+const char* serverURL = "https:/im4.im-hs26.ch/load.php";  // Server-Adresse: hier kann http oder https stehen, aber nicht ohne
+                                                                  // Beispiel: https://fiessling.ch/im4/18_mc2db/load.php
+                                                                  void setup() {
+    Serial.begin(115200);
 
-  // Wire starten mit den benutzerdefinierten I2C Pins
-  Wire.begin(SDA_PIN, SCL_PIN);
+    pinMode(sensorPin, INPUT_PULLDOWN);
+    pinMode(ledPin, OUTPUT);
+    digitalWrite(ledPin, 0);
 
-  // PN532 starten
-  nfc.begin();
 
-  uint32_t versiondata = nfc.getFirmwareVersion();
-  if (!versiondata) {
-    Serial.println("Kein PN532 gefunden – Verbindung prüfen.");
-    while (1); // bleibt hängen, wenn nichts gefunden wird
-  }
+    ////////////////////////////////////////////////////////// Verbindung mit Wi-Fi herstellen
 
-  // Chip-Daten anzeigen
-  Serial.print("Found chip PN5"); Serial.println((versiondata>>24) & 0xFF, HEX);
-  Serial.print("Firmware Version: "); Serial.print((versiondata>>16) & 0xFF, DEC);
-  Serial.print('.'); Serial.println((versiondata>>8) & 0xFF, DEC);
-
-  // Konfiguriere das Modul für RFID-Lesen
-  nfc.SAMConfig();
-  Serial.println("Warte auf ein RFID/NFC Tag...");
-}
-
-void loop(void) {
-  uint8_t success;
-  uint8_t uid[7];
-  uint8_t uidLength;
-
-  success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, uid, &uidLength);
-  
-  if (success) {
-    Serial.print("Tag erkannt, UID: ");
-    for (uint8_t i = 0; i < uidLength; i++) {
-      Serial.print(uid[i], HEX); Serial.print(" ");
+    WiFi.begin(ssid, pass);
+    Serial.println("Connecting");
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
     }
-    Serial.println();
-    delay(1000);
-  }
+    Serial.printf("\nWiFi connected: SSID: %s, IP Address: %s\n", ssid, WiFi.localIP().toString().c_str());
 }
+
+void loop() {
+    sensorState = digitalRead(sensorPin);
+    if(sensorState == prev_sensorState){
+      return;
+    }
+    prev_sensorStae = sensorState;
+
+    if(sensorState == 1){.  // Kühlschrank zu
+      digitalWrite(ledPin, 0);
+    }
+
+    else{       // Kühlschrank offen
+      digitalWrite(ledPin, 1);
+    }
+
+    ////////////////////////////////////////////////////////// JSON zusammenbauen
+    int wert = undefined;
+    JSONVar dataObject;
+    dataObject["wert"] = wert;
+    // dataObject["wert2"] = wert2;
+    String jsonString = JSON.stringify(dataObject);
+    // String jsonString = "{\"sensor\":\"fiessling\", \"wert\":77}";  // stattdessen könnte man den JSON string auch so zusammenbauen
+
+
+    ////////////////////////////////////////////////////////// JSON string per HTTP POST request an den Server schicken (server2db.php)
+
+    if (WiFi.status() == WL_CONNECTED) {                    // Überprüfen, ob Wi-Fi verbunden ist
+      // HTTP Verbindung starten und POST-Anfrage senden
+      HTTPClient http;
+      http.begin(serverURL);
+      http.addHeader("Content-Type", "application/json");
+      int httpResponseCode = http.POST(jsonString);
+
+      // Prüfen der Antwort
+      if (httpResponseCode > 0) {
+        String response = http.getString();
+        Serial.printf("HTTP Response code: %d\n", httpResponseCode);
