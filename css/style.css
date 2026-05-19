@@ -50,18 +50,23 @@ header {
   cursor: pointer;
 }
 
-  main {
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 0 24px;
-    text-align: center;
-    min-height: calc(100vh - 110px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 70px;
-  }
+main {
+  max-width: 520px;
+  margin: 0 auto;
+
+  padding-top: 150px;   /* Abstand zum Header */
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 120px; /* Abstand zum Footer */
+
+  text-align: center;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .illustration_geschichten {
     display: flex;

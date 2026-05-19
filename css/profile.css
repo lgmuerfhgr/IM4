@@ -19,6 +19,7 @@ header {
   padding: 32px 48px 0;
   display: flex;
   justify-content: flex-end;
+  background-color: var(--color-light-pink);
 }
 
 .nav-button {
@@ -38,6 +39,19 @@ header {
   height: 40px;
   object-fit: contain;
   cursor: pointer;
+}
+
+main {
+  min-height: 100vh;
+
+  padding-top: 40px;
+  padding-bottom: 120px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  position: relative;
 }
 
 .illustration_einhörnchen {
@@ -165,3 +179,14 @@ button:hover { filter: brightness(.95); }
 .connect-feedback          { margin-top: 8px; font-size: 0.9rem; min-height: 1.2em; }
 .connect-feedback--success { color: #2e7d32; }
 .connect-feedback--error   { color: #c62828; }
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  background: var(--color-light-pink);
+  z-index: 999;
+}
