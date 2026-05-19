@@ -41,7 +41,7 @@ async function loadStory() {
     document.getElementById("storyText").textContent = story.intro ?? "";
 
     const audio = document.getElementById("storyAudio");
-    audio.src = "/" + story.audio_path;
+    audio.src = encodeURI(story.audio_path);
     audio.load();
 
   } catch (error) {
