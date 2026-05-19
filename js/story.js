@@ -42,14 +42,14 @@ async function loadStory() {
 
     // Tier-Bild anhand animal_id aus DB setzen
     const animalImages = {
-      1: "assets/elefant.png",
-      2: "assets/loewe.png",
-      3: "assets/zebra.png"
+      1: "assets/elefant",
+      2: "assets/Löwe",
+      3: "assets/Zebra"
     };
 
     const animalImg = document.getElementById("animalImage");
     animalImg.src = animalImages[story.animal_id] ?? "";
-    
+
     const audio = document.getElementById("storyAudio");
     audio.src = encodeURI(story.audio_path);
     audio.load();
