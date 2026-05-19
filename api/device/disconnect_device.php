@@ -2,8 +2,6 @@
 header('Content-Type: application/json');
 include_once '../../system/config.php';
 
-session_start();
-
 $userId = requireLogin();
 $data = getJsonInput();
 
