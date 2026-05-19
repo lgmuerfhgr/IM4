@@ -29,6 +29,7 @@ $stmt = $pdo->prepare("
         s.id,
         s.title,
         s.intro,
+         s.animal_id,
         s.audio_path,
         usp.play_count
     FROM user_story_progress usp
