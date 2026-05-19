@@ -8,7 +8,7 @@
  * - Logout
  ***************************************************************/
 
-// Prüft ob der User eingeloggt ist. Ansonsten redirect zu login.html
+// Prüft ob der User eingeloggt ist. Bei Fehler → Redirect zu login.html
 async function checkAuth() {
   try {
     const res = await fetch("api/auth/auth.php", { credentials: "include" });
@@ -39,7 +39,8 @@ async function loadProfile() {
   }
 }
 
-// Rendert die verknüpften Boxen in #deviceStatus, Jede Box zeigt serial_id und einen Trennen-Button
+// Rendert die verknüpften Boxen in #deviceStatus
+// Jede Box zeigt serial_id und einen Trennen-Button
 function renderDevices(devices) {
   const el = document.getElementById("deviceStatus");
   if (!el) return;
@@ -57,7 +58,8 @@ function renderDevices(devices) {
   `).join("");
 }
 
-// Rendert die verknüpften Tierfiguren in #figureStatus; zeigt Tiername und serial_id der Figur
+// Rendert die verknüpften Tierfiguren in #figureStatus
+// Zeigt Tiername und serial_id der Figur
 function renderFigures(figures) {
   const el = document.getElementById("figureStatus");
   if (!el) return;
@@ -73,7 +75,8 @@ function renderFigures(figures) {
   }).join("");
 }
 
-// Verbindet eine Box anhand des eingegebenen Box-Codes (serial_id); Zeigt Erfolg/Fehler inline unter dem Eingabefeld (#connectFeedback)
+// Verbindet eine Box anhand des eingegebenen Box-Codes (serial_id)
+// Zeigt Erfolg oder Fehler inline unter dem Eingabefeld (#connectFeedback)
 async function connectDevice() {
   const input = document.getElementById("deviceCode");
   const feedback = document.getElementById("connectFeedback");
@@ -117,7 +120,8 @@ async function connectDevice() {
   }
 }
 
-// Trennt eine Box vom User-Profil (setzt user_id in boxes auf NULL); Bestätigung per confirm()
+// Trennt eine Box vom User-Profil (setzt user_id in boxes auf NULL)
+// Bestätigung per confirm() da destruktive Aktion
 async function disconnectDevice(deviceId) {
   if (!confirm("Box wirklich trennen?")) return;
 
@@ -131,7 +135,7 @@ async function disconnectDevice(deviceId) {
 
     const result = await res.json();
     if (result.error) { alert(result.error); return; }
-    loadProfile(); // Liste nach Trennen aktualisieren
+    loadProfile();
   } catch (e) {
     alert("Fehler beim Trennen der Box.");
   }
@@ -147,7 +151,8 @@ async function logout() {
   }
 }
 
-// Speichert den geänderten Namen des Users in der Datenbank, wird beim change-Event des Namensfelds ausgelöst
+// Speichert den geänderten Namen des Users in der Datenbank
+// Wird beim change-Event des Namensfelds ausgelöst
 async function updateName() {
   const newName = document.getElementById("userName").value.trim();
   if (!newName) { alert("Name darf nicht leer sein."); return; }

@@ -6,12 +6,14 @@
  * - Prüft ob sie bereits vergeben ist (eigener oder fremder User)
  * - Verknüpft die Box mit dem eingeloggten User (user_id)
  * - Gibt serial_id bei Erfolg zurück, Fehlermeldung sonst
- * verwendete Datenbanktabelle: boxes
+ *
+ * verwendete Datenbanktabellen: boxes
  *********************************************************/
 
 header('Content-Type: application/json');
 include_once '../../system/config.php';
-session_start();
+
+// session_start() wird bereits in config.php aufgerufen – nicht nochmals aufrufen
 
 // Nur eingeloggte User dürfen Boxen verbinden
 if (!isset($_SESSION['user_id'])) {
@@ -20,16 +22,18 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// JSON-Body einlesen und serial_id validieren
-$data = json_decode(file_get_contents("php://input"));
+$userId = $_SESSION['user_id'];
 
-if (!isset($data->serial_id) || trim($data->serial_id) === '') {
+// getJsonInput() aus config.php liest und dekodiert den JSON-Body
+$data = getJsonInput();
+
+$serial_id = trim($data['serial_id'] ?? '');
+
+if ($serial_id === '') {
     http_response_code(400);
     echo json_encode(['error' => 'Kein Box-Code angegeben.']);
     exit();
 }
-
-$serial_id = trim($data->serial_id);
 
 try {
     // Prüfen ob eine Box mit dieser serial_id existiert
@@ -45,8 +49,8 @@ try {
     }
 
     // Box gehört bereits diesem User → als Erfolg behandeln
-    if ((int)$box['user_id'] === (int)$_SESSION['user_id']) {
-        echo json_encode(['success' => true, 'serial_id' => $box['serial_id'], 'message' => 'Box bereits mit deinem Profil verbunden.']);
+    if ((int)$box['user_id'] === (int)$userId) {
+        echo json_encode(['success' => true, 'serial_id' => $box['serial_id']]);
         exit();
     }
 
@@ -59,7 +63,7 @@ try {
 
     // Box ist frei → user_id eintragen (Verknüpfung herstellen)
     $stmt = $pdo->prepare("UPDATE boxes SET user_id = ? WHERE id = ?");
-    $stmt->execute([$_SESSION['user_id'], $box['id']]);
+    $stmt->execute([$userId, $box['id']]);
 
     // serial_id zurückgeben, damit JS den Namen im Feedback anzeigen kann
     echo json_encode(['success' => true, 'serial_id' => $box['serial_id']]);
