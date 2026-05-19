@@ -3,14 +3,16 @@
  * Eingebunden in: profile.html
  *********************************************************/
 
-* {box-sizing: border-box;}
+* { box-sizing: border-box; }
 
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:var(--color-white-pink);
-    color: white;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--color-white-pink);
+  color: white;
 }
+
+/* ── Navigation ── */
 
 header {
   height: 110px;
@@ -28,23 +30,17 @@ header {
   text-decoration: none;
 }
 
-/* linker Button */
-.nav-left {
-  left: 20px;
-}
+.nav-left  { left: 20px; }
+.nav-right { right: 20px; }
 
-/* rechter Button */
-.nav-right {
-  right: 20px;
-}
-
-/* Icons */
 .nav-button img {
   width: 40px;
   height: 40px;
   object-fit: contain;
   cursor: pointer;
 }
+
+/* ── Profil-Karte ── */
 
 .profile-container {
   width: 285px;
@@ -80,6 +76,8 @@ header {
   font-weight: 900;
 }
 
+/* ── Formular-Elemente ── */
+
 label {
   display: block;
   margin-bottom: 8px;
@@ -105,18 +103,11 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  filter: brightness(.95);
-}
+button:hover { filter: brightness(.95); }
 
-.logout-btn {
-  width: 100%;
-  margin-top: 4px;
-}
+.logout-btn { width: 100%; margin-top: 4px; }
 
-.device-status {
-  margin-bottom: 0;
-}
+/* ── Box / Figuren-Badges ── */
 
 .device-badge {
   display: inline-flex;
@@ -132,11 +123,7 @@ button:hover {
   margin-bottom: 8px;
 }
 
-.device-badge-none {
-  background-color: white;
-  color: var(--color-blue);
-}
-
+/* Trennen-Button innerhalb eines Badge */
 .disconnect-btn {
   background: none;
   border: none;
@@ -147,36 +134,19 @@ button:hover {
   color: var(--color-orange);
 }
 
-.device-connect-form {
-  margin-top: 0;
-}
+/* ── Box verbinden ── */
 
 .device-input-row {
   display: grid;
   gap: 10px;
 }
 
-.device-input-row input {
-  flex: 1;
-}
-
 .connect-btn {
   width: 100%;
-  background-color: var(--color-orange);
-  color: white;
   white-space: nowrap;
 }
 
-.connect-feedback {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  min-height: 1.2em; /* verhindert Layout-Sprung wenn leer */
-}
- 
-.connect-feedback--success {
-  color: #2e7d32;
-}
- 
-.connect-feedback--error {
-  color: #c62828;
-}
+/* Inline-Feedback unter dem Eingabefeld */
+.connect-feedback          { margin-top: 8px; font-size: 0.9rem; min-height: 1.2em; }
+.connect-feedback--success { color: #2e7d32; }
+.connect-feedback--error   { color: #c62828; }
