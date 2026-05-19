@@ -1,0 +1,30 @@
+/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/build/build_profile-1779194212924/core/esp32-hal-periman.c.o: \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32_3.3.7_d11527a2071b9cce/cores/esp32/esp32-hal-periman.c \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32_3.3.7_d11527a2071b9cce/cores/esp32/esp32-hal-log.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/qio_qspi/include/sdkconfig.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_timer/include/esp_timer.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/newlib/platform_include/stdio.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_err.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_compiler.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_hw_support/include/esp_etm.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_rom/esp32c6/include/esp32c6/rom/ets_sys.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_rom/include/esp_rom_sys.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/soc/esp32c6/include/soc/reset_reasons.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/soc/esp32c6/include/soc/soc_caps.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_config.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_level.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_assert.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_color.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_buffer.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_timestamp.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_write.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_format.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_args.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_macros.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_assert.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_attr.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_attr.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_private/log_attr.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32_3.3.7_d11527a2071b9cce/cores/esp32/esp32-hal-periman.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_bit_defs.h

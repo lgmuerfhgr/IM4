@@ -1,29 +1,26 @@
 <?php
- /*****************************************************
+/*****************************************************
  * Kapitel 12: Website2DB > Schritt 2: Website -> DB
  * load.php
- * Daten als JSON-String vom Formular sender.html (später vom MC) serverseitig empfangen und Daten in die Datenbank einfügen
- * Datenbank-Verbindung
-**************************/
-
+ * JSON-Daten vom MC empfangen und in die Datenbank einfügen
+ ****************************************************/
 
 require_once("../system/config.php");
-// echo "This script receives HTTP POST messages and pushes their content into the database.";
-
-
 
 ###################################### Empfangen der JSON-Daten
 
-$inputJSON = file_get_contents('php://input'); // JSON-Daten aus dem Body der Anfrage
-$input = json_decode($inputJSON, true); 
+$inputJSON = file_get_contents('php://input');
+$input = json_decode($inputJSON, true);
 
+###################################### Werte auslesen
 
-###################################### receiving a post request from a HTML form, later from ESP
+$wert      = $input["wert"]      ?? null;   // NFC Tag UID
+$device_id = $input["device_id"] ?? null;   // Geräte-ID (optional)
 
-$wert = $input["wert"];         // Hol den Wert an der Stelle "wert" aus dem JS-Objekt (ehemals JSON-String)
-# insert new user into db
-$sql = "INSERT INTO sensordata (wert) VALUES (?)";
+###################################### Ein einziger INSERT mit beiden Werten
+
+$sql  = "INSERT INTO sensordata (figure_id, device_id) VALUES (?, ?)";
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$wert]);
+$stmt->execute([$wert, $device_id]);
 
 ?>

@@ -1,3 +1,5 @@
+#include <Arduino.h>
+#line 1 "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/mc.ino"
  /******************************************************************************************
  * Kap. 13: Sende NFC-Tag UID an Server
  * mc.ino
@@ -41,6 +43,15 @@ const long scanInterval  = 250;   // alle 250ms scannen
 const long lockDuration  = 5000;  // gleicher Tag erst nach 5s erneut senden
 
 // ─────────────────────────────────────────────
+#line 44 "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/mc.ino"
+void setup();
+#line 65 "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/mc.ino"
+void loop();
+#line 121 "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/mc.ino"
+void connectWiFi();
+#line 138 "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/mc.ino"
+bool is_wlan_connected();
+#line 44 "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/mc.ino"
 void setup() {
   Serial.begin(115200);
   while (!Serial) delay(100);
@@ -100,7 +111,6 @@ void loop() {
 
   JSONVar dataObject;
   dataObject["wert"] = detectedID;
-  dataObject["device_id"] = "box_001";
   String jsonString = JSON.stringify(dataObject);
 
   ////////////////////////////////////////////////////////////// HTTP POST an Server

@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "../../..,../../..,../../..,../..,../..,../..,../..,../..,../..,../..,../..,../..",
+  "compiler.optimization_flags": "-Os",
+  "customBuildProperties": "",
+  "fqbn": "esp32:esp32:esp32c6:UploadSpeed=921600,CDCOnBoot=default,CPUFreq=160,FlashFreq=80,FlashMode=qio,FlashSize=4M,PartitionScheme=default,DebugLevel=none,EraseFlash=none,JTAGAdapter=default,ZigbeeMode=default",
+  "hardwareFolders": "/Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32_3.3.7_d11527a2071b9cce,/Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32_3.3.7_d11527a2071b9cce",
+  "otherLibrariesFolders": "/Users/nathalietschanz/Documents/Arduino/libraries",
+  "sketchLocation": "/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc"
+}
