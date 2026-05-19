@@ -1,0 +1,98 @@
+/*********************************************************
+ * css/auto-player.css
+ * Styles für den automatisch erscheinenden Audio-Player
+ * der beim Erkennen einer Tierfigur eingeblendet wird.
+ * Einbinden in index.html: <link rel="stylesheet" href="css/auto-player.css" />
+ *********************************************************/
+
+/* ── Overlay-Hintergrund ── */
+#autoPlayerOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+
+  /* Animation */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#autoPlayerOverlay.auto-player-visible {
+  display: flex;
+  opacity: 1;
+}
+
+/* ── Card ── */
+.auto-player-card {
+  position: relative;
+  background: #fff;
+  border-radius: 1.5rem;
+  padding: 2rem 1.75rem 1.75rem;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+
+  animation: playerSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes playerSlideUp {
+  from { transform: translateY(40px) scale(0.95); opacity: 0; }
+  to   { transform: translateY(0)    scale(1);    opacity: 1; }
+}
+
+/* ── Schliessen-Button ── */
+.auto-player-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #aaa;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.auto-player-close:hover {
+  color: #333;
+}
+
+/* ── Tier-Bild ── */
+#autoPlayerAnimal {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+/* ── Titel ── */
+#autoPlayerTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: #222;
+}
+
+/* ── Intro-Text ── */
+#autoPlayerIntro {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+}
+
+/* ── Audio-Element ── */
+#autoPlayerAudio {
+  width: 100%;
+  border-radius: 0.5rem;
+}
