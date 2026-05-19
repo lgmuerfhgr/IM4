@@ -42,9 +42,9 @@ async function loadStory() {
 
     // Tier-Bild anhand animal_id aus DB setzen
     const animalImages = {
-      1: "assets/elefant",
-      2: "assets/Löwe",
-      3: "assets/Zebra"
+      1: "assets/illustrations/Tiere/Elefant.png",
+      2: "assets/illustrations/Tiere/Löwe.png",
+      3: "assets/illustrations/Tiere/Zebra.png"
     };
 
     const animalImg = document.getElementById("animalImage");
