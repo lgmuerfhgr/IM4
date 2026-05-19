@@ -40,11 +40,26 @@ header {
   cursor: pointer;
 }
 
+.illustration_einhörnchen {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.illustration_einhörnchen img {
+    width: 40vw;
+    max-width: 100px;
+    min-width: 80px;
+    height: auto;
+}
+
 /* ── Profil-Karte ── */
 
 .profile-container {
   width: 285px;
-  min-height: 405px;
+  min-height: 380px;
   margin: 0 auto;
   background: var(--color-blue);
   border-radius: 14px;

@@ -65,3 +65,20 @@ button{
 button:hover{
     filter:brightness(.95)
 }
+
+.illustration_konto_anmelden {
+    position: absolute;
+    left: 50%;
+    bottom: -180px;
+    transform: translateX(-35%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+
+.illustration_konto_anmelden img {
+    width: 80vw;
+    max-width: 800px;
+    min-width: 600px;
+    height: auto;
+}

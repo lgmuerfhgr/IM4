@@ -73,6 +73,7 @@ try {
     echo json_encode(['error' => 'Datenbankfehler: ' . $e->getMessage()]);
 }
 ?>
+
 /*********************************************************
 * api/device/connect_device.php
 * - Verbindet ein Gerät mit einem eingeloggten Benutzer anhand device_code (z. B. 1234)
