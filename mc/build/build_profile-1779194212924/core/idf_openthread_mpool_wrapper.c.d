@@ -1,0 +1,31 @@
+/Users/nathalietschanz/Desktop/01_Studium/Fächer/Semester-4/IM4/Schleich/IM4/mc/build/build_profile-1779194212924/core/idf_openthread_mpool_wrapper.c.o: \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32_3.3.7_d11527a2071b9cce/cores/esp32/idf_openthread_mpool_wrapper.c \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/soc/esp32c6/include/soc/soc_caps.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/qio_qspi/include/sdkconfig.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/newlib/platform_include/assert.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/heap/include/esp_heap_caps.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/heap/include/multi_heap.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_err.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/newlib/platform_include/stdio.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_compiler.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_attr.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_rom/include/esp_rom_sys.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/soc/esp32c6/include/soc/reset_reasons.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_config.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_level.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_assert.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_color.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_buffer.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_timestamp.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_write.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_format.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_args.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_macros.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/esp_common/include/esp_assert.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_log_attr.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/log/include/esp_private/log_attr.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/openthread/openthread/include/openthread/instance.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/openthread/openthread/include/openthread/error.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/openthread/openthread/include/openthread/platform/toolchain.h \
+ /Users/nathalietschanz/Library/Arduino15/internal/esp32_esp32c6-libs_3.3.7_5eced54dc665916d/include/openthread/openthread/include/openthread/platform/messagepool.h
