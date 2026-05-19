@@ -55,6 +55,17 @@ header {
     align-items: center;
   }
 
+.illustration_geschichten {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.illustration_geschichten img {
+    width: 40%;
+    height: auto;
+}
+
 h1 {
   margin: 0 0 56px;
   color: var(--color-blue);
