@@ -1,28 +1,9 @@
-/*********************************************************
- * js/story.js
- * - prüft Auth
- * - lädt einzelne Story anhand story.html?id=...
- * - setzt Titel und Audio-Datei
- *********************************************************/
-
 async function checkAuth() {
   try {
-    const response = await fetch("api/auth/auth.php", {
-      credentials: "include",
-    });
-
-    if (response.status === 401) {
-      window.location.href = "login.html";
-      return false;
-    }
-
+    const response = await fetch("api/auth/auth.php", { credentials: "include" });
+    if (response.status === 401) { window.location.href = "login.html"; return false; }
     const result = await response.json();
-
-    if (result.error || !result.email) {
-      window.location.href = "login.html";
-      return false;
-    }
-
+    if (result.error || !result.email) { window.location.href = "login.html"; return false; }
     return true;
   } catch (error) {
     console.error("Auth check failed:", error);
@@ -55,11 +36,24 @@ async function loadStory() {
       return;
     }
 
+     // Titel und Intro-Text ins DOM schreiben
     document.getElementById("storyTitle").textContent = story.title;
-    document.getElementById("storyText").textContent = story.description || "";
+    document.getElementById("storyText").textContent = story.intro ?? "";
+
+    // Tier-Bild anhand animal_id aus DB setzen
+    const animalImages = {
+      1: "assets/illustrations/Tiere/Elefant.png",
+      2: "assets/illustrations/Tiere/Löwe.png",
+      3: "assets/illustrations/Tiere/Zebra.png"
+    };
+
+    const animalImg = document.getElementById("animalImage");
+    animalImg.src = animalImages[story.animal_id] ?? "";
 
     const audio = document.getElementById("storyAudio");
-    audio.src = story.audio_path;
+    audio.src = encodeURI(story.audio_path);
+    audio.load();
+
   } catch (error) {
     console.error("Error loading story:", error);
   }

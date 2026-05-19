@@ -24,10 +24,15 @@ h1{
     font-weight:900;
 }
 
-.deko{
-    font-size:48px;
-    letter-spacing:12px;
-    margin:4px 0 8px;
+.deko {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deko img {
+    width: 40%;
+    height: auto;
 }
 
 .button-register,
