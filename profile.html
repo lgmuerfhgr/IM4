@@ -44,25 +44,12 @@
       </div>
 
       <div class="profile-section">
-        <h5>Box verbinden</h5>
+        <h5>Deine Boxen</h5>
 
         <div id="deviceStatus" class="device-status">
           <!-- Wird durch JS gefüllt -->
-        </div>
-
-        <div id="connectForm" class="device-connect-form">
-          <label for="deviceCode">Box-Code</label>
-
-          <div class="device-input-row">
-            <input type="text" id="deviceCode" placeholder="z.B. BOX001" />
-
-            <button onclick="connectDevice()" class="connect-btn">
-              Verbinden
-            </button>
-          </div>
-        </div>
       </div>
-
+      
       <div class="profile-section">
         <h5>Deine Figuren</h5>
 
@@ -70,6 +57,21 @@
           <!-- Wird durch JS gefüllt -->
         </div>
       </div>
+
+        <div id="connectForm" class="device-connect-form">
+          <h5>Neue Box verknüpfen</h5>
+          <label for="deviceCode"></label>
+
+          <div class="device-input-row">
+            <input type="text" id="deviceCode" placeholder="Box-Code z.B. BOX001" />
+
+            <button onclick="connectDevice()" class="connect-btn">
+              Verknüpfen
+            </button>
+          </div>
+        </div>
+
+
     </div>
   </main>
 
