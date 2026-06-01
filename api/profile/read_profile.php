@@ -8,6 +8,8 @@
  * verwendete Datenbanktabellen:
  * users, boxes, user_figures, figures, animals
  *********************************************************/
+ini_set('display_errors', 0);
+error_reporting(0);
 
 header('Content-Type: application/json');
 include_once '../../system/config.php';
@@ -42,7 +44,6 @@ try {
     echo json_encode([
         'user'    => $userInfo,
         'devices' => $devices,
-        'figures' => $figures
     ]);
 
 } catch (PDOException $e) {
