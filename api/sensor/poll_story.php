@@ -2,7 +2,6 @@
 /*********************************************************
  * api/sensor/poll_story.php
  *
- * Polling-Endpoint für den Browser.
  * Wird alle paar Sekunden vom eingeloggten User aufgerufen.
  *
  * Ablauf:
@@ -82,7 +81,7 @@ try {
 
     // 4a. figure_id (serial_id) → animal_id
     $stmt = $pdo->prepare("SELECT animal_id FROM figures WHERE serial_id = ?");
-    $stmt->execute([trim($figureSerialId)]);
+    $stmt->execute([$figureSerialId]);
     $figure = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$figure) {
