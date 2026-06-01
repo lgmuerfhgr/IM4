@@ -2,17 +2,13 @@
 
 /*********************************************************
 * api/auth/register.php
-* - Session starten, JSON-Antworten liefern
 * - Prüft, ob die Anfrage per POST gesendet wurde
 * - Liest und validiert Name, E-Mail und Passwort
-* - Prüft, ob die E-Mail bereits vergeben ist (-> in Tabelle users)
+* - Prüft, ob die E-Mail bereits vergeben ist
 * - Hasht das Passwort sicher
-* - Legt einen neuen Benutzer in der Datenbank an (-> in Tabelle users)
+* - Legt einen neuen Benutzer in der Datenbank an
 * - Gibt Erfolgs- oder Fehlermeldungen als JSON zurück
 
-* Server-seitiger Code: wird auf dem Server ausgeführt (API-Endpunkt)
-* Aufgerufen serverseitig in: js/register.js; durch ein Client-Registrierungsformular
-* Server-Interaktion mit: system/config.php, Datenbankzugriff über PDO, Session-Verwaltung
 * Verwendete Datenbanktabellen: users
 *********************************************************/
 

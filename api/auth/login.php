@@ -8,8 +8,6 @@
 * - Session-Handling bei erfolgreichem Login
 * - Rückgabe von JSON-Antworten für Erfolg oder Fehler
 *
-* Server-seitiger Code: wird auf dem Server ausgeführt (API-Endpunkt)
-* Aufgerufen clientseitig in js/login.js; durch ein Client-Login-Formular (login.html)
 * verlinkt mit: ../../system/config.php (enthält DB-Konfiguration)
 * verwendete Datenbanktabelle: users
 *********************************************************/
