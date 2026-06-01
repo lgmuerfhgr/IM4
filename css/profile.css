@@ -177,9 +177,18 @@ button:hover { filter: brightness(.95); }
 
 /* Inline-Feedback unter dem Eingabefeld */
 .connect-feedback          { margin-top: 8px; font-size: 0.9rem; min-height: 1.2em; }
-.connect-feedback--success { color: #2e7d32; }
-.connect-feedback--error   { color: #c62828; }
-
+.connect-feedback--success {
+  color: #27ae60;
+  background: #eafaf1;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
+.connect-feedback--error {
+  color: #c62828;
+  background: #fdecea;
+  border-radius: 6px;
+  padding: 8px 12px;
+}
 .page-footer {
   position: fixed;
   bottom: 0;

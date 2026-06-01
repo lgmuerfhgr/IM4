@@ -1,7 +1,7 @@
 /***************************************************************
  * js/profile.js
  * - Authentifizierung prüfen
- * - Profil laden (Name, Boxen, Figuren)
+ * - Profil laden (Name, Boxen)
  * - Box verbinden mit Inline-Feedback
  * - Box trennen
  * - Name aktualisieren
@@ -22,7 +22,7 @@ async function checkAuth() {
   }
 }
 
-// Lädt Profildaten (Name, Boxen, Figuren) vom Server und rendert sie
+// Lädt Profildaten (Name, Boxen) vom Server und rendert sie
 async function loadProfile() {
   if (!await checkAuth()) return;
 
@@ -33,7 +33,6 @@ async function loadProfile() {
 
     document.getElementById("userName").value = data.user.name || "";
     renderDevices(data.devices || []);
-    renderFigures(data.figures || []);
   } catch (e) {
     console.error("Error loading profile:", e);
   }
@@ -58,28 +57,24 @@ function renderDevices(devices) {
   `).join("");
 }
 
-// Rendert die verknüpften Tierfiguren in #figureStatus
-// Zeigt Tiername und serial_id der Figur
-function renderFigures(figures) {
-  const el = document.getElementById("figureStatus");
-  if (!el) return;
-
-  if (figures.length === 0) {
-    el.innerHTML = '<span class="device-badge device-badge-none">Keine Figur verbunden</span>';
-    return;
+function getOrCreateFeedbackEl() {
+  let el = document.getElementById("connectFeedback");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "connectFeedback";
+    el.className = "connect-feedback";
+    const row = document.querySelector(".device-input-row");
+    if (row) row.insertAdjacentElement("afterend", el);
+    else document.getElementById("connectForm")?.appendChild(el);
   }
-
-  el.innerHTML = figures.map(f => {
-    const label = f.animal_name ? `${f.animal_name} (${f.serial_id})` : f.serial_id;
-    return `<div class="device-badge">Figur: ${label}</div>`;
-  }).join("");
+  return el;
 }
 
 // Verbindet eine Box anhand des eingegebenen Box-Codes (serial_id)
 // Zeigt Erfolg oder Fehler inline unter dem Eingabefeld (#connectFeedback)
 async function connectDevice() {
   const input = document.getElementById("deviceCode");
-  const feedback = document.getElementById("connectFeedback");
+  const feedback = getOrCreateFeedbackEl();
   const code = input.value.trim();
 
   // Feedback zurücksetzen

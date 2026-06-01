@@ -3,7 +3,6 @@
  * api/profile/read_profile.php
  * - Liest Benutzername aus users
  * - Listet verbundene Boxen aus boxes
- * - Listet verknüpfte Figuren aus user_figures und figures
  * - Gibt alle Daten als JSON zurück
  *
  * verwendete Datenbanktabellen:
@@ -39,18 +38,6 @@ try {
     $stmt = $pdo->prepare("SELECT id, serial_id FROM boxes WHERE user_id = ? ORDER BY id ASC");
     $stmt->execute([$userId]);
     $devices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Alle verknüpften Figuren des Users laden (inkl. Tiername)
-    $stmt = $pdo->prepare("
-        SELECT f.id, f.serial_id, f.animal_id, a.name AS animal_name
-        FROM user_figures uf
-        INNER JOIN figures f ON f.id = uf.figure_id
-        LEFT JOIN animals a ON a.id = f.animal_id
-        WHERE uf.user_id = ?
-        ORDER BY a.name ASC, f.serial_id ASC
-    ");
-    $stmt->execute([$userId]);
-    $figures = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode([
         'user'    => $userInfo,
