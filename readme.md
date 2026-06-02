@@ -237,6 +237,8 @@ Allgemein
 Das WebApp Team
   Wir haben jeweils viel Zeit in das Prompten investiert, und dabei genau überlegt: Wie funktioniert unsere Website? Wie steht sie in Verbindung mit der DB, und wann muss wo was abgefragt werden? Danach war der KI-Einsatz sehr hilfreich, weil es uns ermöglichte, schnell und effizient zu coden.
   Wir setzten Claude ein für Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging. Konkret generierten wir mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php
+Das Physical Computing Team
+MUSS NOCH ERGÄNZT WERDEN
 
 * **Fazit:** …
 Der Einstieg war etwas holprig. Doch die Entscheidung, die Geschichten auf der Website abzuspielen anstelle über eine physische Box, erleichterte unsere Arbeit enorm. Mithilfe von Claude und genauem Prompten ging es im Gesamten gut voran. Natürlich gab es Auf und Abs und etliche Debuggings, aber im Grossen und Ganzen sind wir happy mit dem Endresultat und würden beim nächsten Mal ähnlich vorgehen.
