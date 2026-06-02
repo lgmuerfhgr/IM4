@@ -15,11 +15,11 @@ Zusätzlich unterstützt das System Eltern dabei, Medienkonsum bewusster zu gest
 * Was ist der „Sinn und Zweck“ des Systems?
 Der Sinn und Zweck des Systems ist es, digitale Interaktion mit haptischem Spielen zu verbinden und dadurch eine kindgerechte, kreative und sensorische Lernerfahrung zu schaffen.
 Das System soll:
-  die Fantasie und Neugier von Kindern fördern
-  auditive und haptische Sinneserfahrungen kombinieren
-  Eltern bei einer bewussten Medienerziehung unterstützen
-  sowie gemeinsame Familienmomente durch Geschichten und Interaktion stärken
-  Durch die Verbindung von physischen Schleich-Tierfiguren mit Audioinhalten entsteht eine intuitive IoT-Anwendung, die Lernen, Spielen und Storytelling altersgerecht kombiniert
+- die Fantasie und Neugier von Kindern fördern
+- auditive und haptische Sinneserfahrungen kombinieren
+- Eltern bei einer bewussten Medienerziehung unterstützen
+- sowie gemeinsame Familienmomente durch Geschichten und Interaktion stärken
+- Durch die Verbindung von physischen Schleich-Tierfiguren mit Audioinhalten entsteht eine intuitive IoT-Anwendung, die Lernen, Spielen und Storytelling altersgerecht kombiniert
 
 ### UX & Konzeption
 
@@ -31,8 +31,7 @@ Die Grundidee des Projekts war einen Art tiptoi Spiel zu kreieren mit Kindergesc
 
 
 * *Welche Features wurden nicht umgesetzt? (Warum)*
-Beim Design haben wir zunächst mehrere zusätzliche Seiten und Funktionen geplant. Im Verlauf des Prozesses entschieden wir uns jedoch, einige davon wieder zu entfernen, da wir das Projekt dadurch einfacher, verständlicher und benutzerfreundlicher gestalten konnten. Dazu gehörten beispielsweise spezielle „Herzliche Glückwunsch“-Seiten.
-Ausserdem war ursprünglich vorgesehen, die Geschichten direkt auf der Box abzuspielen und dort zu speichern, sodass die Nutzung vollständig ohne Bildschirm möglich wäre. Aufgrund der technischen Komplexität sowie begrenzter Speicher- und Kapazitätsmöglichkeiten liess sich diese Idee jedoch nicht sinnvoll umsetzen. Deshalb entschieden wir uns für eine vereinfachte Lösung: Die Geschichten werden nun direkt über die Web-App abgespielt. Dadurch weicht das Endprodukt zwar teilweise von der ursprünglichen Idee einer komplett bildschirmfreien Kinderaktivität ab, ermöglicht aber eine realistischere und technisch umsetzbare Umsetzung des Projekts.
+Beim Design haben wir zunächst mehrere zusätzliche Seiten und Funktionen geplant. Im Verlauf des Prozesses entschieden wir uns jedoch, einige davon wieder zu entfernen, da wir das Projekt dadurch einfacher, verständlicher und benutzerfreundlicher gestalten konnten. Dazu gehörten beispielsweise spezielle „Herzliche Glückwunsch“-Seiten. Ausserdem war ursprünglich vorgesehen, die Geschichten direkt auf der Box abzuspielen und dort zu speichern, sodass die Nutzung vollständig ohne Bildschirm möglich wäre. Aufgrund der technischen Komplexität sowie begrenzter Speicher- und Kapazitätsmöglichkeiten liess sich diese Idee jedoch nicht sinnvoll umsetzen. Deshalb entschieden wir uns für eine vereinfachte Lösung: Die Geschichten werden nun direkt über die Web-App abgespielt. Dadurch weicht das Endprodukt zwar teilweise von der ursprünglichen Idee einer komplett bildschirmfreien Kinderaktivität ab, ermöglicht aber eine realistischere und technisch umsetzbare Umsetzung des Projekts.
 
 ### Setup
 
@@ -44,33 +43,72 @@ Ausserdem war ursprünglich vorgesehen, die Geschichten direkt auf der Box abzus
 ***verständliche** Schritt-für-Schritt-Anleitung für Aussenstehende, um das Projekt zu klonen und auf einem eigenen Server zu installieren*
 
 1. *Was benötige ich an Infrastruktur?*  
-  Infomaniak Webhosting
-  phpMyAdmin
-  GitHub Repository
-  Visual Studio Code
-  Browser (Chrome, Safari, Google) auf Laptop oder Handy
+- Infomaniak Webhosting (oder vergleichbarer Hoster mit PHP 7.4+ und MariaDB)
+- phpMyAdmin (ist bei Infomaniak bereits inklusive)
+- GitHub-Account + Git oder GitHub Desktop zum Klonen des Repositories
+- Visual Studio Code (oder ein anderer Code-Editor)
+- Browser (Chrome, Firefox oder Safari) auf Laptop oder Handy
 
 2. *Was muss ich auf meinem Webserver installieren?*  
-?? MÜSSEN WIR NOCH AUSFÜLLEN
+Bei Infomaniak muss nichts manuell installiert werden – PHP und MariaDB sind bereits vorinstalliert.
+Folgendes wird benötigt und ist bei Infomaniak inklusive:
+- PHP 7.4 oder höher
+- MariaDB / MySQL
+- phpMyAdmin
+- FTP-Zugang (z.B. via FileZilla) zum Hochladen der Dateien
 
 3. *Wie kann ich die Datenbank importieren?* 
-In phpMyAdmin eine neue Datenbank erstellen. Unter "Importieren" die Datei unter system/612bjf_im4.sql auswählen und importieren.
-Alle Tabellen (animals, boxes, figures, sensordata, stories, users, user_story_progress) werden angelegt. 
+  1. In phpMyAdmin einloggen und eine neue Datenbank erstellen
+  2. Die neu erstellte Datenbank anklicken.
+  3. Oben auf den Tab **„Importieren"** klicken.
+  4. Datei `system/612bjf_im4.sql` auswählen und importieren.
+  5. Folgende Tabellen werden automatisch angelegt:
+    - `animals` – Tierarten
+    - `boxes` – physische Boxen
+    - `figures` – NFC-Tierfiguren
+    - `sensordata` – Kontakt-Events der Tierfiguren mit der Box
+    - `stories` – Geschichten
+    - `users` – Benutzerkonten
+    - `user_story_progress` – Abspielhistorie pro User
 
 4. *Wo muss ich die DB-Credentials eintragen?*  
 Bei VisualStudio die Datei system/config.php öffnen und folgende Werte anpassen:
-  DB_HOST → Datenbankserver (z.B. localhost oder 612bjf.myd.infomaniak.com)
-  DB_NAME → Name der Datenbank
-  DB_USER → Datenbankbenutzer
-  DB_PASS → Datenbankpasswort
+```php
+$host = 'localhost';        // DB-Host (bei Infomaniak anders)
+$db   = 'meine_datenbank'; // Name deiner Datenbank
+$user = 'mein_user';       // DB-Benutzername
+$pass = 'mein_passwort';   // DB-Passwort
+```
+> ⚠️ **Wichtig:** `config.php` in der `.gitignore` Datei eintragen, damit die Zugangsdaten nicht auf GitHub hochgeladen werden!
+
+So geht's:
+  Datei `.gitignore` im Projektordner öffnen (oder neu erstellen).
+  Folgende Zeile hinzufügen:
+  ```
+  system/config.php
+  ```
 
 5. *Audio-Dateien*  
-Audio-Dateien (.mp3) in den Ordner audio/ auf dem Server ablegen. Achtung: Dateinamen müssen mit den Einträgen in der stories.audio_path Spalte auf der Datenbank übereinstimmen.
+  1. Alle `.mp3` Dateien in den Ordner `audio/` auf dem Server hochladen (via FTP/FileZilla).
+  2. Die Dateinamen müssen **exakt** mit den Einträgen in der Datenbankspalte `stories.audio_path` übereinstimmen – inklusive Gross-/Kleinschreibung.
 
 6. *Wie nehme ich das physische Artefakt in Betrieb?*
 ?? MÜSSEN WIR NOCH AUSFÜLLEN
 Box mit User-Profil verknüpfen: Profil-Seite öffnen → Box-Code eingeben → Verknüpfen.
 Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
+
+#### Bauanleitung Physical Computing
+
+* ***Was muss ich wie bauen, verbinden, installieren?***  
+* *ergänze: **Komponentenplan** (betrifft Physical Computing, vgl. Slides Kapitel 15): Schaubild enthält*  
+  * *die eingesetzten Komponenten*  
+  * *die verbundenen Sensoren und Aktoren*  
+  * *die Programme (mit Dateinamen)*  
+  * *die Kommunikationswege*  
+* *ergänze: **Steckplan** (betrifft Physical Computing, vgl. Slides Kapitel 15): generiert z.B. mit Fritzing (empfohlen), Tinkercad, Wokwi*  
+  * *beachtet die [Fritzing Parts](https://github.com/Interaktive-Medien/im_physical_computing/tree/main/15_Intro_Projektdoku) extra für euch*  
+* *ggf. **Bildmaterial***
+
 
 ## Technische Details
 
@@ -78,7 +116,7 @@ Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
 
 Schleich/
 │
-├── index.html              ← Hauptseite: Sensordata - Alle freigeschalteten Stories des Users
+├── index.html              ← Hauptseite: alle freigeschalteten Stories des Users
 ├── login.html              ← Startseite: Konto erstellen / anmelden
 ├── loginpage.html          ← Login-Formular
 ├── profile.html            ← Profil, Box verbinden, Logout
@@ -86,424 +124,119 @@ Schleich/
 ├── story.html              ← Unterseite: Story mit Titel und Audio
 │
 ├── js/
-│   ├── index.js            ← lädt/sortiert freigeschaltete Geschichten nach play_count
+│   ├── index.js            ← lädt und sortiert freigeschaltete Geschichten nach play_count
 │   ├── login.js            ← Login-Formular absenden
 │   ├── register.js         ← Registrierung absenden
 │   ├── story.js            ← angeklickte Story laden mit Titel und Audio
 │   └── profile.js          ← Profil laden, Box verwalten, Logout
 │
 ├── css/
-│   ├── auto-player.css     ← Styles für den automatisch erscheinenden Audio-Player beim Erkennen einer Tierfigur
+│   ├── auto-player.css     ← Styles für den automatisch erscheinenden Audio-Player
 │   ├── design.css          ← Allgemeine Farben und Responsivness
 │   ├── login.css           ← Styles für login.html
 │   ├── loginpage.css       ← Styles für loginpage.html
 │   ├── profile.css         ← Styles für profile.html
-│   └── register.css        ← Styles fpr register.html
-│   ├── style.css           ← styles index.html 
+│   ├── register.css        ← Styles für register.html
+│   └── style.css           ← Styles für index.html
 │
 ├── api/
 │   ├── auth/
-│   │   ├── auth.php        ← Session prüfen ("Bin ich eingeloggt?")
-│   │   ├── login.php       ← Login verarbeiten
-│   │   ├── register.php    ← Registrierung verarbeiten
-│   │   └── logout.php      ← Session zerstören
+│   │   ├── auth.php               ← Session prüfen ("Bin ich eingeloggt?")
+│   │   ├── login.php              ← Login verarbeiten
+│   │   ├── register.php           ← Registrierung verarbeiten
+│   │   └── logout.php             ← Session zerstören
 │   ├── device/
 │   │   ├── connect_device.php     ← Box mit User verbinden
-│   │   ├── disconnect_device.php  ← Box mit User trennen
+│   │   └── disconnect_device.php  ← Box von User trennen
 │   ├── profile/
-│   │   ├── read_profile.php        ← Profildaten laden
-│   │   └── update_profile.php      ← Namen ändern
+│   │   ├── read_profile.php       ← Profildaten laden
+│   │   └── update_profile.php     ← Namen ändern
 │   ├── sensor/
-│   │   ├── poll_story.php        ← Alle 3sek DB-Abfrage nach neuem Eintrag in sensordata-Tabelle
+│   │   └── poll_story.php         ← alle 3 Sek. DB-Abfrage nach neuem Eintrag in sensordata
 │   └── stories/
-│       ├── read_story.php           ← lädt Story bei Unterseite story.html
-│       ├── read_user_stories.php    ← lädt alle freigeschalteten Stories und stortiert sie nach Wiedergabe
+│       ├── read_story.php         ← lädt einzelne Story für story.html
+│       └── read_user_stories.php  ← lädt alle freigeschalteten Stories, sortiert nach Wiedergabe
 │
 ├── system/
-│   ├── config.php          ← Echte DB-Zugangsdaten (gitignored!)
-│   └── 612bjf_im4.sql      ← Datenbank-Struktur
+│   ├── config.php          ← DB-Zugangsdaten (gitignored!)
+│   └── 612bjf_im4.sql      ← Datenbank-Struktur und Testdaten
 │
 ├── assets/
-│   └── Tiere Illustrationen und User und Story Menüsymbol
-├── audio/  
-│   └── alle mp3 Audio Dateien der Stories
-
+│   └── Tier-Illustrationen, Menü-Icons
+│
+└── audio/
+    └── alle .mp3 Audiodateien der Stories
 
 * **Datenschnittstelle: \[***zwischen WebApp und Physical Computing*\]  
 Physical Computing: 
-  NFC-Figur wird auf Box gestellt → Microcontroller erkennt NFC-Tag 
-   Hardware schreibt Eintrag in Tabelle sensordata (figure_id + device_id + Zeitstempel) 
+  1. NFC-Figur wird auf Box gestellt → Microcontroller erkennt NFC-Tag
+  2. Hardware schreibt direkt einen Eintrag in die Tabelle `sensordata`:
+    - `figure_id` → Seriennummer der NFC-Figur
+    - `device_id` → Seriennummer der Box
+    - `zeit` → Zeitstempel (automatisch)NFC-Figur wird auf Box gestellt → Microcontroller erkennt NFC-Tag 
 WebApp: 
-  Browser pollt alle 3 Sekunden api/sensor/poll_story.php
-  PHP prüft: gibt es neuen sensordata-Eintrag für eine Box dieses Users?
-  figure_id → figures → animal_id → zufällige Story aus stories
-  play_count in user_story_progress wird um 1 erhöht (oder neu angelegt)
-  Story-Daten werden als JSON an den Browser zurückgegeben
-  Audio-Player Overlay erscheint automatisch und spielt die Geschichte ab
+  3. Browser pollt alle 3 Sekunden `api/sensor/poll_story.php`
+  4. PHP prüft: gibt es einen neuen `sensordata`-Eintrag für eine Box dieses Users?
+  5. `figure_id` → `figures` → `animal_id` → zufällige Story aus `stories`
+  6. `play_count` in `user_story_progress` wird um 1 erhöht (oder neu angelegt)
+  7. Story-Daten werden als JSON an den Browser zurückgegeben
+  8. Audio-Player Overlay erscheint automatisch und spielt die Geschichte ab
 
 * **ERM:** \[*Erklärung und Schaubild*\]  
 Hauptbeziehungen:
 users → boxes (1:n, ein User hat mehrere Boxen)
-users →  stories (1:n, ein User hat mehrere Stories)
-animals → figures (1:n, ein Tier hat mehrere Figuren)
+users →  stories (n:m, ein User hat mehrere Stories)
+animals → figures (1:n, ein Tier hat mehrere physische Figuren)
 animals → stories (1:n, ein Tier hat mehrere Geschichten)
 
 * **Authentifizierung:** \[*Erklärung*\]
-Session-basiert (PHP Sessions mit session_start() in config.php)
-Login speichert user_id in $_SESSION
-Jeder API-Endpoint prüft isset($_SESSION['user_id']), sonst HTTP 401
-Browser prüft via api/auth/auth.php – bei 401 Redirect zu login.html
-Logout: session_destroy() + Redirect
+Session-basiert via PHP. Nach dem Login wird die `user_id` in `$_SESSION` gespeichert. Jeder API-Endpoint prüft dies – fehlt die Session, kommt HTTP 401 zurück und der Browser leitet zu `login.html` weiter.
 
-1. User öffnet index.html
-2. JavaScript ruft checkAuth() auf
-3. fetch("api/auth/auth.php") mit Session-Cookie
-4. PHP prüft: Gibt es user_id in der Session?
-    JA  → User-Daten als JSON → Seite wird geladen
-    NEIN → 401 Unauthorized → JavaScript leitet zu login.html weiter
-5. Einloggen mit Email + Passwort
-2. Der Server erstellt eine Session (eine Art Gedächtnis) und speichert deine User-ID darin
-3. Der Server schickt dir ein Session-Cookie (eine kleine ID) zurück
-4. Bei jedem weiteren Request schickt dein Browser dieses Cookie automatisch mit
-5. Der Server liest das Cookie, findet die Session, und weiss wieder wer du bist
+  1. `index.html` lädt → JavaScript ruft `checkAuth()` auf
+  2. `fetch("api/auth/auth.php")` wird mit Session-Cookie gesendet
+  3. PHP prüft ob `user_id` in der Session existiert
+    - **JA** → User-Daten als JSON → Seite wird geladen
+    - **NEIN** → HTTP 401 → Redirect zu `login.html`
 
+  **Ablauf beim Login:**
+  1. User gibt Email + Passwort ein
+  2. Server prüft Passwort, erstellt Session und speichert `user_id`
+  3. Browser erhält ein Session-Cookie (kleine ID)
+  4. Bei jedem weiteren Request schickt der Browser dieses Cookie automatisch mit
+  5. Server liest Cookie → findet Session → weiss wer eingeloggt ist
 
-## Known bugs
-* Was funktioniert noch nicht einwandfrei? 
-Autoplay blockiert: Browser blockieren Audio-Autoplay ohne vorherige User-Interaktion. Player erscheint, User muss manuell Play drücken.
+  Logout: `session_destroy()` löscht die Session serverseitig → Redirect zu `login.html`
 
-* Was könnte noch verbessert werden?
- Polling-Delay: 3-Sekunden-Intervall bedeutet bis zu 3 Sek. Verzögerung nach NFC-Kontakt. Es gäbe vielleicht andere Lösungsansätze, wie ohne Verzögerung nach NFC Kontakt, eine Geschichte abgespielt wird
+## Known Bugs
 
+* **Autoplay blockiert:**
+Browser blockieren Audio-Autoplay ohne vorherige User-Interaktion (Sicherheitsmassnahme der Browser). Der Player erscheint zwar automatisch, der User muss aber manuell auf Play drücken.
+
+* **Polling-Delay:**
+Das 3-Sekunden-Intervall bedeutet bis zu 3 Sekunden Verzögerung nach NFC-Kontakt. Eine mögliche Verbesserung wäre Server-Sent Events (SSE): Der Server schickt dabei aktiv eine Nachricht an den Browser sobald ein neuer Eintrag in `sensordata` erscheint – ohne Verzögerung und ohne wiederholte Abfragen.
 
 ## Umsetzungsprozess
 
 * **Lernfortschritt:**
 Das WebApp Team
-  Datenbank Verständnis: wir haben uns intensiv damit auseinandergesetzt, welche Tabellen für das Projekt nötig sind und warum und welche Verknüpfungen sie untereinander haben müssen.
+  Datenbankverständnis: Wir haben uns intensiv damit auseinandergesetzt, welche Tabellen für das Projekt nötig sind und  warum, und welche Verknüpfungen sie untereinander haben müssen. Ausserdem haben wir gelernt, wie eine WebApp mit einer Datenbank kommuniziert – via PHP API-Endpoints – und wie Session-basierte Authentifizierung funktioniert.
 Das Physical Computing Team
   MUSS NOCH ERGÄNZT WERDEN 
 
 * **Herausforderungen & Lösungen:** \[*Verworfene Ansätze, Fehler, Umplanungen*\]  
-Das WebApp Team
-  MUSS NOCH ERGÄNZT WERDEN
+WebApp Team
+  Die Datenbankstruktur war eine echte Herausforderung: Die komplexe Idee musste auf das Wesentliche heruntergebrochen werden. Das hat Zeit gekostet, hat sich aber gelohnt. Die finale Struktur ist klar und nachvollziehbar. Durch dieses Verständnis konnten wir unser Projekt präziser beschreiben und bessere Prompts für die KI erstellen, was uns im weiteren Verlauf viel Zeit gespart hat.
+
 Das Physical Computing Team
   MUSS NOCH ERGÄNZT WERDEN 
+
+Allgemein
+  Es war  ursprünglich vorgesehen, die Geschichten direkt auf einer Musikbox abzuspielen und dort zu speichern, sodass die Nutzung vollständig ohne Bildschirm möglich ist. Doch wegen der Komplexität, entschieden wir uns für eine vereinfachte Lösung über die WebApp.
 
 * **KI-Einsatz:** *Dokumentation der verwendeten KI-Tools und deren Nutzen (KI ist nicht verboten)*  
 Das WebApp Team
   Wir haben jeweils viel Zeit in das Prompten investiert, und dabei genau überlegt: Wie funktioniert unsere Website? Wie steht sie in Verbindung mit der DB, und wann muss wo was abgefragt werden? Danach war der KI-Einsatz sehr hilfreich, weil es uns ermöglichte, schnell und effizient zu coden.
   Wir setzten Claude ein für Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging. Konkret generierten wir mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php
 
-
 * **Fazit:** …
-Der Einstieg war etwas holprig. Doch die Entscheidung, die Geschichten auf der Website abzuspielen anstelle über eine physische Box, erleichterte unsere Arbeit enorm. Mithilfe Claude und genauem Prompten ging esim Gesamten gut voran. Natürlich gab es Auf und Abs und etliche Debuggings, aber im Grossen und Ganzen sind wir happy mit dem Endresultat und würden beim nächsten mal ähnlich vorangehen. 
-
-
-
-### 3.1 Die Grundidee: Sessions & Cookies
-
-
-
-```
-
-### 3.5 Logout
-
-Beim Logout wird die Session serverseitig zerstört:
-
-**Frontend (`profile.js`):**
-
-```javascript
-async function logout() {
-  await fetch("api/auth/logout.php");
-  window.location.href = "login.html";
-}
-```
-
-**Backend (`api/auth/logout.php`):**
-
-```php
-session_start();
-$_SESSION = [];       // Alle Session-Daten löschen
-session_destroy();    // Session komplett zerstören
-```
-
-### 3.6 Zusammenfassung Auth-Flow
-
-```
-                    ┌──────────────┐
-                    │  register.   │
-                    │  html        │
-                    └──────┬───────┘
-                           │ POST name, email, password
-                           ▼
-                    ┌──────────────┐
-                    │  register.   │──► password_hash() ──► INSERT INTO users
-                    │  php         │
-                    └──────┬───────┘
-                           │ Erfolg → Redirect
-                           ▼
-                    ┌──────────────┐
-                    │  login.      │
-                    │  html        │
-                    └──────┬───────┘
-                           │ POST email, password
-                           ▼
-                    ┌──────────────┐
-                    │  login.      │──► password_verify() ──► Session setzen
-                    │  php         │
-                    └──────┬───────┘
-                           │ Erfolg → Redirect
-                           ▼
-              ┌────────────────────────────┐
-              │  Geschützte Seiten         │
-              │  (index, settings, profile)│
-              │                            │
-              │  checkAuth() bei jedem     │
-              │  Seitenaufruf              │
-              └────────────┬───────────────┘
-                           │ Logout
-                           ▼
-                    ┌──────────────┐
-                    │  logout.php  │──► session_destroy()
-                    └──────────────┘
-```
-
----
-
-## 4. Projektstruktur
-
-```
-
-
-### Die API-Ordnerstruktur folgt einem Muster:
-
-```
-api/{feature}/{action}.php
-```
-
-Beispiele:
-
-- `api/auth/login.php` → Feature: Auth, Action: Login
-- `api/tracks/read.php` → Feature: Tracks, Action: Lesen
-- `api/device/connect_device.php` → Feature: Gerät, Action: Verbinden
-
----
-
-## 5. Datenbank-Schema
-
-Die App nutzt **MySQL/MariaDB** mit folgenden Tabellen:
-
-```
-┌──────────────┐       ┌──────────────────┐       ┌──────────────┐
-│    users     │       │  user_has_device  │       │   devices    │
-├──────────────┤       ├──────────────────┤       ├──────────────┤
-│ id (PK)      │◄──────│ user_id (FK)     │       │ id (PK)      │
-│ email        │       │ device_id (FK)   │──────►│ device_code  │
-│ password     │       └──────────────────┘       └──────┬───────┘
-│ name         │                                         │
-└──────────────┘                                         │
-                                                         │
-                       ┌──────────────────┐              │
-                       │  device_tracks   │              │
-                       ├──────────────────┤              │
-                       │ device_id (FK)   │──────────────┘
-                       │ track_id (FK)    │──────────────┐
-                       └──────────────────┘              │
-                                                         │
-                       ┌──────────────────┐       ┌──────┴───────┐
-                       │  sensordata      │       │   tracks     │
-                       ├──────────────────┤       ├──────────────┤
-                       │ id (PK)          │       │ id (PK)      │
-                       │ device_id (FK)   │       │ title        │
-                       │ starttime        │       └──────────────┘
-                       │ endtime          │
-                       └──────────────────┘
-```
-
-### Tabellen im Detail:
-
-| Tabelle           | Zweck                                                     | Wichtige Spalten                                       |
-| ----------------- | --------------------------------------------------------- | ------------------------------------------------------ |
-| `users`           | Benutzerkonten                                            | `email` (unique), `password` (gehashter Wert!), `name` |
-| `devices`         | Physische Babyphone-Geräte                                | `device_code` (unique, steht auf dem Gerät)            |
-| `user_has_device` | Welcher User hat welches Gerät (many-to-many)             | `user_id`, `device_id`                                 |
-| `tracks`          | Verfügbare Beruhigungssongs                               | `title`                                                |
-| `device_tracks`   | Welche Tracks auf welchem Gerät aktiv sind (many-to-many) | `device_id`, `track_id`                                |
-| `sensordata`      | Wann hat das Baby geweint?                                | `device_id`, `starttime`, `endtime`                    |
-
-### Warum Zwischentabellen (Junction Tables)?
-
-`user_has_device` und `device_tracks` sind **Zwischentabellen** für Many-to-Many-Beziehungen:
-
-- Ein User kann **mehrere** Geräte haben
-- Ein Gerät kann **mehreren** Usern gehören (z.B. Mutter + Vater)
-- Ein Gerät kann **mehrere** Tracks haben
-- Ein Track kann auf **mehreren** Geräten aktiv sein
-
----
-
-## 6. API-Referenz
-
-Alle Endpoints befinden sich unter `api/` und geben **JSON** zurück. Geschützte Endpoints prüfen die Session und geben `401` zurück, wenn der User nicht eingeloggt ist.
-
-### Authentication
-
-| Endpoint                | Methode | Geschützt | Beschreibung                  |
-| ----------------------- | ------- | --------- | ----------------------------- |
-| `api/auth/register.php` | POST    | Nein      | Neuen Account erstellen       |
-| `api/auth/login.php`    | POST    | Nein      | Einloggen (Session starten)   |
-| `api/auth/auth.php`     | GET     | Ja        | Prüfen ob eingeloggt          |
-| `api/auth/logout.php`   | GET     | Ja        | Ausloggen (Session zerstören) |
-
-### Geräte
-
-| Endpoint                           | Methode | Geschützt | Beschreibung               |
-| ---------------------------------- | ------- | --------- | -------------------------- |
-| `api/device/list.php`              | GET     | Ja        | Geräte des Users auflisten |
-| `api/device/connect_device.php`    | POST    | Ja        | Gerät per Code verbinden   |
-| `api/device/disconnect_device.php` | POST    | Ja        | Gerät trennen              |
-
-### Profil
-
-| Endpoint                 | Methode | Geschützt | Beschreibung               |
-| ------------------------ | ------- | --------- | -------------------------- |
-| `api/profile/read.php`   | GET     | Ja        | Profildaten + Geräte laden |
-| `api/profile/update.php` | POST    | Ja        | Namen ändern               |
-
-### Tracks (Playlist)
-
-| Endpoint                                | Methode | Geschützt | Beschreibung                  |
-| --------------------------------------- | ------- | --------- | ----------------------------- |
-| `api/tracks/read.php`                   | GET     | Ja        | Alle Tracks mit Auswahlstatus |
-| `api/tracks/update_selected_tracks.php` | POST    | Ja        | Track-Auswahl ändern          |
-
-### Sensordata - wann hat das Baby geeint?
-
-| Endpoint                             | Methode | Geschützt | Beschreibung     |
-| ------------------------------------ | ------- | --------- | ---------------- |
-| `api/sensordata/read_sensordata.php` | GET     | Ja        | Sensordata laden |
-
-### Beispiel-Requests
-
-**Login:**
-
-```javascript
-const response = await fetch("api/auth/login.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  body: new URLSearchParams({ email: "anna@test.ch", password: "123456" }),
-});
-const result = await response.json();
-// → { "status": "success" }
-```
-
-**Track-Auswahl ändern (JSON-Body):**
-
-```javascript
-const response = await fetch("api/tracks/update_selected_tracks.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ track_id: 3, selected: 1 }),
-});
-```
-
-> Beachte: Auth-Endpoints nutzen `application/x-www-form-urlencoded` (wie ein normales HTML-Formular), während andere Endpoints `application/json` nutzen. Beides funktioniert - es ist einfach eine Konvention.
-
----
-
-## 7. Frontend: Wie die Seiten funktionieren
-
-### Allgemeines Pattern
-
-Jede geschützte Seite folgt dem gleichen Muster:
-
-```javascript
-// 1. Auth prüfen
-async function loadPage() {
-  const isAuthorized = await checkAuth();
-  if (!isAuthorized) return; // → Redirect zu login.html
-
-  // 2. Daten von der API laden
-  const response = await fetch("api/..../read.php");
-  const data = await response.json();
-
-  // 3. Daten ins HTML rendern
-  data.forEach((item) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `<td>${item.title}</td>`;
-    tbody.appendChild(row);
-  });
-}
-
-// 4. Beim Laden der Seite aufrufen
-document.addEventListener("DOMContentLoaded", loadPage);
-```
-
-### Seitenübersicht
-
-| Seite           | Zweck                         | API-Calls                                                                                                                                                     |
-| --------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `login.html`    | Anmeldung                     | `POST api/auth/login.php`                                                                                                                                     |
-| `register.html` | Registrierung                 | `POST api/auth/register.php`                                                                                                                                  |
-| `index.html`    | Sensordata (Charts + Tabelle) | `GET api/auth/auth.php`, `GET api/sensordata/read.php`                                                                                                        |
-| `settings.html` | Playlist verwalten            | `GET api/auth/auth.php`, `GET api/tracks/read.php`, `POST api/tracks/update_selected_tracks.php`                                                              |
-| `profile.html`  | Profil, Geräte, Logout        | `GET api/auth/auth.php`, `GET api/profile/read.php`, `POST api/device/connect_device.php`, `POST api/device/disconnect_device.php`, `GET api/auth/logout.php` |
-
-### Chart.js für Diagramme
-
-Die Sensordata-Seite (`index.html`) nutzt [Chart.js](https://www.chartjs.org/) um zwei Balkendiagramme zu rendern:
-
-- **Heulzeit nach Tag** - Wie viele Minuten pro Tag geweint wurde
-- **Heulen nach Uhrzeit** - Zu welcher Tageszeit am meisten geweint wird
-
-Die Daten werden per API geladen und mit JavaScript in Chart.js-kompatible Strukturen transformiert.
-
----
-
-## 8. Installation
-
-### 1. Repository klonen
-
-```bash
-git clone <repository-url>
-```
-
-### 2. Datenbank einrichten
-
-- Erstelle eine neue MySQL/MariaDB-Datenbank bei deinem Hoster (z.B. [Infomaniak](https://www.infomaniak.com/de/support/faq/1981/mysqlmariadb-benutzer-und-datenbanken-verwalten)).
-- Importiere `system/setup.sql` in die Datenbank - das erstellt alle Tabellen und fügt Standard-Tracks ein.
-
-### 3. Konfiguration
-
-- Kopiere `system/config.php.blank` und benenne die Kopie in `system/config.php` um.
-- Trage deine Datenbank-Zugangsdaten ein:
-
-```php
-$host = 'localhost';        // DB-Host (bei Infomaniak anders)
-$db   = 'meine_datenbank'; // Name deiner Datenbank
-$user = 'mein_user';       // DB-Benutzername
-$pass = 'mein_passwort';   // DB-Passwort
-```
-
-> `config.php` ist in `.gitignore` eingetragen und wird **nicht** ins Repository gepusht. So bleiben deine Zugangsdaten privat.
-
-### 4. Hochladen
-
-- Lade alle Dateien per FTP/SFTP auf deinen Webserver hoch.
-- Erstelle eine FTP-Verbindung gemäss [Anleitung im MMP 101](https://github.com/Interaktive-Medien/101-MMP/blob/main/resources/sftp.md).
-
-### 5. Testen
-
-- Öffne die Seite im Browser → du solltest auf `login.html` landen.
-- Erstelle einen Account über `register.html`.
-- Logge dich ein → du landest auf `index.html`.
-
----
-
-## 9. Troubleshooting
-
-- **Login funktioniert nicht nach Datei-Verschiebung:** Cache im Browser löschen oder in einem privaten Tab testen. PHP-Sessions können bei Pfadänderungen Probleme machen.
-- **Datenbank-Fehler:** Prüfe die Zugangsdaten in `system/config.php`. Nutze `system/test_connection.php` um die Verbindung zu testen.
-- **Keine Daten auf der Hauptseite:** Verbinde zuerst ein Gerät auf der Profilseite (beliebigen Code eingeben) und erstelle dann Demo-Daten über den Button auf der Hauptseite.
-- **401 Unauthorized bei API-Calls:** Stelle sicher, dass `credentials: "include"` bei fetch-Requests gesetzt ist, wenn Frontend und Backend auf verschiedenen Domains laufen.
+Der Einstieg war etwas holprig. Doch die Entscheidung, die Geschichten auf der Website abzuspielen anstelle über eine physische Box, erleichterte unsere Arbeit enorm. Mithilfe von Claude und genauem Prompten ging es im Gesamten gut voran. Natürlich gab es Auf und Abs und etliche Debuggings, aber im Grossen und Ganzen sind wir happy mit dem Endresultat und würden beim nächsten Mal ähnlich vorgehen.
