@@ -1,8 +1,7 @@
 /*********************************************************
  * css/auto-player.css
- * Styles für den automatisch erscheinenden Audio-Player
- * der beim Erkennen einer Tierfigur eingeblendet wird.
- * Einbinden in index.html: <link rel="stylesheet" href="css/auto-player.css" />
+ * Styles für den automatisch erscheinenden Audio-Player, der beim Erkennen einer Tierfigur eingeblendet wird.
+ * Eingebunden in index.html
  *********************************************************/
 
 /* ── Overlay-Hintergrund ── */

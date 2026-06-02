@@ -81,21 +81,23 @@ Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
 
 Schleich/
 │
-├── index.html              ← Hauptseite: Sensordata - wann hat das baby geweint? (Charts + Tabelle)
-├── login.html              ← Login-Formular
+├── index.html              ← Hauptseite: Sensordata - Alle freigeschalteten Stories des Users
+├── login.html              ← Startseite: Konto erstellen / anmelden
+├── loginpage.html          ← Login-Formular
+├── profile.html            ← Profil, Box verbinden, Logout
 ├── register.html           ← Registrierungs-Formular
-├── settings.html           ← Playlist-Verwaltung
-├── profile.html            ← Profil, Geräte verbinden, Logout
+├── story.html              ← Unterseite: Story mit Titel, Audio
+
 │
 ├── js/
+│   ├── index.js            ← lädt/sortiert freigeschaltete Geschichten nach play_count
 │   ├── login.js            ← Login-Formular absenden
 │   ├── register.js         ← Registrierung absenden
-│   ├── index.js            ← Sensordata laden (wann das Baby geweint hat), Charts rendern
-│   ├── settings.js         ← Tracks laden, Auswahl toggeln
+│   ├── story.js            ← Story laden, Titel und Audio
 │   └── profile.js          ← Profil laden, Geräte verwalten, Logout
 │
 ├── css/
-│   ├── design_system.css   ← Design Tokens (Farben, Schriften, Abstände)
+│   ├── design.css          ← Farben und responsivness
 │   ├── style.css           ← Hauptstyles (Layout, Typografie, Charts)
 │   ├── nav.css             ← Bottom-Navigation & Profil-Shortcut
 │   ├── login_register.css  ← Styles für Login/Register-Seiten
