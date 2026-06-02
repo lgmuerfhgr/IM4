@@ -15,11 +15,11 @@ Zusätzlich unterstützt das System Eltern dabei, Medienkonsum bewusster zu gest
 * Was ist der „Sinn und Zweck“ des Systems?
 Der Sinn und Zweck des Systems ist es, digitale Interaktion mit haptischem Spielen zu verbinden und dadurch eine kindgerechte, kreative und sensorische Lernerfahrung zu schaffen.
 Das System soll:
-- die Fantasie und Neugier von Kindern fördern,
-- auditive und haptische Sinneserfahrungen kombinieren,
-- Eltern bei einer bewussten Medienerziehung unterstützen,
-- sowie gemeinsame Familienmomente durch Geschichten und Interaktion stärken.
-- Durch die Verbindung von physischen Schleich-Tierfiguren mit Audioinhalten entsteht eine intuitive IoT-Anwendung, die Lernen, Spielen und Storytelling altersgerecht kombiniert.
+  die Fantasie und Neugier von Kindern fördern
+  auditive und haptische Sinneserfahrungen kombinieren
+  Eltern bei einer bewussten Medienerziehung unterstützen
+  sowie gemeinsame Familienmomente durch Geschichten und Interaktion stärken
+  Durch die Verbindung von physischen Schleich-Tierfiguren mit Audioinhalten entsteht eine intuitive IoT-Anwendung, die Lernen, Spielen und Storytelling altersgerecht kombiniert
 
 ### UX & Konzeption
 
@@ -44,40 +44,37 @@ Ausserdem war ursprünglich vorgesehen, die Geschichten direkt auf der Box abzus
 ***verständliche** Schritt-für-Schritt-Anleitung für Aussenstehende, um das Projekt zu klonen und auf einem eigenen Server zu installieren*
 
 1. *Was benötige ich an Infrastruktur?*  
-Infomaniak Webhosting
-phpMyAdmin
-GitHub Repository
-Visual Studio Code
-Browser (Chrome, Safari, Google) auf Laptop oder Handy
+  Infomaniak Webhosting
+  phpMyAdmin
+  GitHub Repository
+  Visual Studio Code
+  Browser (Chrome, Safari, Google) auf Laptop oder Handy
 
 2. *Was muss ich auf meinem Webserver installieren?*  
-??
+?? MÜSSEN WIR NOCH AUSFÜLLEN
 
 3. *Wie kann ich die Datenbank importieren?* 
-In phpMyAdmin eine neue Datenbank erstellen. Unter "Importieren" die Datei 612bjf_im4.sql auswählen und importieren.
+In phpMyAdmin eine neue Datenbank erstellen. Unter "Importieren" die Datei unter system/612bjf_im4.sql auswählen und importieren.
 Alle Tabellen (animals, boxes, figures, sensordata, stories, users, user_story_progress) werden angelegt. 
 
 4. *Wo muss ich die DB-Credentials eintragen?*  
-Bei VisualStudio die Datei “system/config.php” öffnen und folgende Werte anpassen:
-
-DB_HOST → Datenbankserver (z.B. localhost oder 612bjf.myd.infomaniak.com)
-DB_NAME → Name der Datenbank
-DB_USER → Datenbankbenutzer
-DB_PASS → Datenbankpasswort
+Bei VisualStudio die Datei system/config.php öffnen und folgende Werte anpassen:
+  DB_HOST → Datenbankserver (z.B. localhost oder 612bjf.myd.infomaniak.com)
+  DB_NAME → Name der Datenbank
+  DB_USER → Datenbankbenutzer
+  DB_PASS → Datenbankpasswort
 
 5. *Audio-Dateien*  
-Audio-Dateien (.mp3) in den Ordner audio/ auf dem Server ablegen. Dateinamen müssen mit den Einträgen in der stories.audio_path Spalte auf der Datenbank übereinstimmen.
+Audio-Dateien (.mp3) in den Ordner audio/ auf dem Server ablegen. Achtung: Dateinamen müssen mit den Einträgen in der stories.audio_path Spalte auf der Datenbank übereinstimmen.
 
 6. *Wie nehme ich das physische Artefakt in Betrieb?*
-??
+?? MÜSSEN WIR NOCH AUSFÜLLEN
 Box mit User-Profil verknüpfen: Profil-Seite öffnen → Box-Code eingeben → Verknüpfen.
 Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
 
-## technische Details
+## Technische Details
 
-// Hier sollte das Verständnis ersichtlich sein / Wie stehen die Dateien in Beziehung zueinander, Wie reden Die Dateien miteinander, Wie ist der Weg der Daten
-
-* **Projektstruktur / Code-Struktur:** \[*Hinweis: Der Code selbst muss im Repository liegen und im Kopfbereich jeder Datei eine kurze Zusammenfassung enthalten.*\]  
+* **Projektstruktur / Code-Struktur:** 
 
 Schleich/
 │
@@ -86,14 +83,14 @@ Schleich/
 ├── loginpage.html          ← Login-Formular
 ├── profile.html            ← Profil, Box verbinden, Logout
 ├── register.html           ← Registrierungs-Formular
-├── story.html              ← Unterseite: Story mit Titel, Audio
+├── story.html              ← Unterseite: Story mit Titel und Audio
 │
 ├── js/
 │   ├── index.js            ← lädt/sortiert freigeschaltete Geschichten nach play_count
 │   ├── login.js            ← Login-Formular absenden
 │   ├── register.js         ← Registrierung absenden
-│   ├── story.js            ← Story laden, Titel und Audio
-│   └── profile.js          ← Profil laden, Geräte verwalten, Logout
+│   ├── story.js            ← angeklickte Story laden mit Titel und Audio
+│   └── profile.js          ← Profil laden, Box verwalten, Logout
 │
 ├── css/
 │   ├── auto-player.css     ← Styles für den automatisch erscheinenden Audio-Player beim Erkennen einer Tierfigur
@@ -130,27 +127,26 @@ Schleich/
 │   └── Tiere Illustrationen und User und Story Menüsymbol
 ├── audio/  
 │   └── alle mp3 Audio Dateien der Stories
-```
 
 
 * **Datenschnittstelle: \[***zwischen WebApp und Physical Computing*\]  
-- NFC-Figur wird auf Box gestellt → Microcontroller erkennt NFC-Tag 
-- Hardware schreibt Eintrag in Tabelle sensordata (figure_id + device_id + Zeitstempel) 
-- Browser pollt alle 3 Sekunden api/sensor/poll_story.php
-- PHP prüft: gibt es neuen sensordata-Eintrag für eine Box dieses Users?
-- figure_id → figures → animal_id → zufällige Story aus stories
-- play_count in user_story_progress wird um 1 erhöht (oder neu angelegt)
-- Story-Daten werden als JSON an den Browser zurückgegeben
-- Audio-Player Overlay erscheint automatisch und spielt die Geschichte ab
+Physical Computing: 
+  NFC-Figur wird auf Box gestellt → Microcontroller erkennt NFC-Tag 
+   Hardware schreibt Eintrag in Tabelle sensordata (figure_id + device_id + Zeitstempel) 
+WebApp: 
+  Browser pollt alle 3 Sekunden api/sensor/poll_story.php
+  PHP prüft: gibt es neuen sensordata-Eintrag für eine Box dieses Users?
+  figure_id → figures → animal_id → zufällige Story aus stories
+  play_count in user_story_progress wird um 1 erhöht (oder neu angelegt)
+  Story-Daten werden als JSON an den Browser zurückgegeben
+  Audio-Player Overlay erscheint automatisch und spielt die Geschichte ab
 
 * **ERM:** \[*Erklärung und Schaubild*\]  
 Hauptbeziehungen:
 users → boxes (1:n, ein User hat mehrere Boxen)
+users →  stories (1:n, ein User hat mehrere Stories)
 animals → figures (1:n, ein Tier hat mehrere Figuren)
 animals → stories (1:n, ein Tier hat mehrere Geschichten)
-sensordata → figures (n:1, via figure_id = serial_id)
-sensordata → boxes (n:1, via device_id = serial_id)
-users ↔ stories (n:m via user_story_progress, mit play_count)
 
 * **Authentifizierung:** \[*Erklärung*\]
 Session-basiert (PHP Sessions mit session_start() in config.php)
@@ -158,6 +154,19 @@ Login speichert user_id in $_SESSION
 Jeder API-Endpoint prüft isset($_SESSION['user_id']), sonst HTTP 401
 Browser prüft via api/auth/auth.php – bei 401 Redirect zu login.html
 Logout: session_destroy() + Redirect
+
+1. User öffnet index.html
+2. JavaScript ruft checkAuth() auf
+3. fetch("api/auth/auth.php") mit Session-Cookie
+4. PHP prüft: Gibt es user_id in der Session?
+    JA  → User-Daten als JSON → Seite wird geladen
+    NEIN → 401 Unauthorized → JavaScript leitet zu login.html weiter
+5. Einloggen mit Email + Passwort
+2. Der Server erstellt eine Session (eine Art Gedächtnis) und speichert deine User-ID darin
+3. Der Server schickt dir ein Session-Cookie (eine kleine ID) zurück
+4. Bei jedem weiteren Request schickt dein Browser dieses Cookie automatisch mit
+5. Der Server liest das Cookie, findet die Session, und weiss wieder wer du bist
+
 
 ## Known bugs
 * Was funktioniert noch nicht einwandfrei? 
@@ -169,61 +178,33 @@ Autoplay blockiert: Browser blockieren Audio-Autoplay ohne vorherige User-Intera
 
 ## Umsetzungsprozess
 
-* **Reflexion / Erfahrung / Lernfortschritt:** *Was haben wir gelernt? Würden wir es nochmal genauso machen? Was war gut, was war schlecht?*  
-
-
-Lernfortschritt: Datenbank Verständnis. Intensiv damit auseinandergesetzt, welche Tabellen für dieses Projekt nötig sind und warum und welche Verknüpfungen sie untereinander haben müssen.
-
+* **Lernfortschritt:**
+Das WebApp Team
+  Datenbank Verständnis: wir haben uns intensiv damit auseinandergesetzt, welche Tabellen für das Projekt nötig sind und warum und welche Verknüpfungen sie untereinander haben müssen.
+Das Physical Computing Team
+  MUSS NOCH ERGÄNZT WERDEN 
 
 * **Herausforderungen & Lösungen:** \[*Verworfene Ansätze, Fehler, Umplanungen*\]  
-
-
+Das WebApp Team
+  MUSS NOCH ERGÄNZT WERDEN
+Das Physical Computing Team
+  MUSS NOCH ERGÄNZT WERDEN 
 
 * **KI-Einsatz:** *Dokumentation der verwendeten KI-Tools und deren Nutzen (KI ist nicht verboten)*  
-Claude wurde eingesetzt für: Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging.
-Konkret generiert mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php.
-
-Wir haben jeweils viel Zeit in das Prompten investiert, und dabei genau überlegt: Wie funktioniert unsere Website? Wie steht sie in Verbindung mit der DB, und wann muss wo was abgefragt werden. Danach war der KI-Einsatz sehr hilfreich, weil es uns ermöglichte, schnell und effizient zu coden.
+Das WebApp Team
+  Wir haben jeweils viel Zeit in das Prompten investiert, und dabei genau überlegt: Wie funktioniert unsere Website? Wie steht sie in Verbindung mit der DB, und wann muss wo was abgefragt werden? Danach war der KI-Einsatz sehr hilfreich, weil es uns ermöglichte, schnell und effizient zu coden.
+  Wir setzten Claude ein für Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging. Konkret generierten wir mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php
 
 
 * **Fazit:** …
+Der Einstieg war etwas holprig. Doch die Entscheidung, die Geschichten auf der Website abzuspielen anstelle über eine physische Box, erleichterte unsere Arbeit enorm. Mithilfe Claude und genauem Prompten ging esim Gesamten gut voran. Natürlich gab es Auf und Abs und etliche Debuggings, aber im Grossen und Ganzen sind wir happy mit dem Endresultat und würden beim nächsten mal ähnlich vorangehen. 
 
-
-
-## Inhaltsverzeichnis
-
-1. [Architektur-Überblick](#1-architektur-überblick)
-2. [Warum Frontend und Backend trennen?](#2-warum-frontend-und-backend-trennen)
-3. [Authentication (Login-System) erklärt](#3-authentication-login-system-erklärt)
-4. [Projektstruktur](#4-projektstruktur)
-5. [Datenbank-Schema](#5-datenbank-schema)
-6. [API-Referenz](#6-api-referenz)
-7. [Frontend: Wie die Seiten funktionieren](#7-frontend-wie-die-seiten-funktionieren)
-8. [Installation](#8-installation)
-9. [Troubleshooting](#9-troubleshooting)
-
----
 
 
 ### 3.1 Die Grundidee: Sessions & Cookies
 
 
-1. Du loggst dich ein (Email + Passwort)
-2. Der Server erstellt eine Session (eine Art Gedächtnis) und speichert deine User-ID darin
-3. Der Server schickt dir ein Session-Cookie (eine kleine ID) zurück
-4. Bei jedem weiteren Request schickt dein Browser dieses Cookie automatisch mit
-5. Der Server liest das Cookie, findet die Session, und weiss wieder wer du bist
-```
 
-**Der Ablauf:**
-
-```
-User öffnet index.html
-  └─► JavaScript ruft checkAuth() auf
-       └─► fetch("api/auth/auth.php") mit Session-Cookie
-            └─► PHP prüft: Gibt es user_id in der Session?
-                 ├─► JA  → 200 OK + User-Daten als JSON → Seite wird geladen
-                 └─► NEIN → 401 Unauthorized → JavaScript leitet zu login.html weiter
 ```
 
 ### 3.5 Logout
