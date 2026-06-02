@@ -1,17 +1,193 @@
-# Heulradar - Babyphone Web App
+## Kurzbeschreibung des Projekts
 
-![Static Badge](https://img.shields.io/badge/Sprache-PHP-%23f7df1e)
-![Static Badge](https://img.shields.io/badge/Kurs-MMP_IM4-blue)
+* **Modul:** Interaktive Medien 4 an der Fachhochschule Graubünden (FS26)  
+* **Themenfeld:** IoT-Applikation zum Thema Eltern mit kleinen Kindern  
+* **Name des Projekts:** \[*Schleich*\]   
+* **Team Physical Computing:** \[*Nathalie Tschanz Kaya Moser*\]   
+* **Team WebApp:** \[*Elena Fankhauser Lou Gmür*\]
+ 
+ 
+* Welches Problem im Alltag von Eltern mit kleinen Kindern wird gelöst? 
+Viele Eltern von 2–4-jährigen Kindern stehen im Alltag vor der Herausforderung, ihre Kinder sinnvoll zu beschäftigen, ohne dabei ständig auf Bildschirme zurückzugreifen. Gleichzeitig fehlt oft die Zeit oder Energie, immer neue Geschichten, Spiele oder Lernangebote bereitzustellen.
+Unser Projekt "Schleich" löst dieses Problem, indem es eine spielerische, interaktive und bildschirmfreie Beschäftigungsmöglichkeit bietet. Kinder können mit physischen Tierfiguren Geschichten, Geräusche und Lerninhalte entdecken, während Eltern eine sichere und altersgerechte Alternative zu Tablet oder Smartphone erhalten.
+Zusätzlich unterstützt das System Eltern dabei, Medienkonsum bewusster zu gestalten und gemeinsame Rituale wie Vorlesen, Einschlafen oder spielerisches Lernen einfacher in den Alltag zu integrieren.
 
-Dieses Repository ist ein Beispielprojekt für Interaktive Medien IV. **Heulradar** ist eine Web-App, mit der Eltern ihr Babyphone verwalten, eine Playlist konfigurieren und die Statistik einsehen können, wann ihr Baby geweint hat.
+* Was ist der „Sinn und Zweck“ des Systems?
+Der Sinn und Zweck des Systems ist es, digitale Interaktion mit haptischem Spielen zu verbinden und dadurch eine kindgerechte, kreative und sensorische Lernerfahrung zu schaffen.
+Das System soll:
+- die Fantasie und Neugier von Kindern fördern,
+- auditive und haptische Sinneserfahrungen kombinieren,
+- Eltern bei einer bewussten Medienerziehung unterstützen,
+- sowie gemeinsame Familienmomente durch Geschichten und Interaktion stärken.
+- Durch die Verbindung von physischen Schleich-Tierfiguren mit Audioinhalten entsteht eine intuitive IoT-Anwendung, die Lernen, Spielen und Storytelling altersgerecht kombiniert.
 
-Die App dient gleichzeitig als **Lernprojekt**, um die folgenden Konzepte zu verstehen:
+### UX & Konzeption
 
-- Wie **Authentication** (Login / Registrierung / Session) funktioniert
-- Warum man **Frontend und Backend trennt** (API-basierter Ansatz)
-- Wie eine **REST-ähnliche API** mit PHP aufgebaut wird
+* **Figma:** [https://www.figma.com/design/jE9s2LsLBBLJzRlK5c1EQX/Designs?node-id=0-1&t=Dn9kSZ3bHQu5CE9I-1]
+* **User Flow \+ Screen Flow** [figma.com/board/zzdbwM68T6rEWDDPCfGAzx/User_Flow_Guess_the_animal?t=7AGZWCf2vAZ6Ks6F-0]
 
----
+* *Welche Features waren angedacht?*
+Die Grundidee des Projekts war einen Art tiptoi Spiel zu kreieren mit Kindergeschichten.  
+
+
+* *Welche Features wurden nicht umgesetzt? (Warum)*
+Beim Design haben wir zunächst mehrere zusätzliche Seiten und Funktionen geplant. Im Verlauf des Prozesses entschieden wir uns jedoch, einige davon wieder zu entfernen, da wir das Projekt dadurch einfacher, verständlicher und benutzerfreundlicher gestalten konnten. Dazu gehörten beispielsweise spezielle „Herzliche Glückwunsch“-Seiten.
+Ausserdem war ursprünglich vorgesehen, die Geschichten direkt auf der Box abzuspielen und dort zu speichern, sodass die Nutzung vollständig ohne Bildschirm möglich wäre. Aufgrund der technischen Komplexität sowie begrenzter Speicher- und Kapazitätsmöglichkeiten liess sich diese Idee jedoch nicht sinnvoll umsetzen. Deshalb entschieden wir uns für eine vereinfachte Lösung: Die Geschichten werden nun direkt über die Web-App abgespielt. Dadurch weicht das Endprodukt zwar teilweise von der ursprünglichen Idee einer komplett bildschirmfreien Kinderaktivität ab, ermöglicht aber eine realistischere und technisch umsetzbare Umsetzung des Projekts.
+
+### Setup
+
+* **WebApp:** [https://im4.im-hs26.ch/]
+* **Video-Dokumentation:** [Link zum Video auf Youtube](http://link.zum.video) 
+
+#### Installationsanleitung WebApp
+
+***verständliche** Schritt-für-Schritt-Anleitung für Aussenstehende, um das Projekt zu klonen und auf einem eigenen Server zu installieren*
+
+1. *Was benötige ich an Infrastruktur?*  
+Infomaniak Webhosting
+phpMyAdmin
+GitHub Repository
+Visual Studio Code
+Browser (Chrome, Safari, Google) auf Laptop oder Handy
+
+2. *Was muss ich auf meinem Webserver installieren?*  
+??
+
+3. *Wie kann ich die Datenbank importieren?* 
+In phpMyAdmin eine neue Datenbank erstellen. Unter "Importieren" die Datei 612bjf_im4.sql auswählen und importieren.
+Alle Tabellen (animals, boxes, figures, sensordata, stories, users, user_story_progress) werden angelegt. 
+
+4. *Wo muss ich die DB-Credentials eintragen?*  
+Bei VisualStudio die Datei “system/config.php” öffnen und folgende Werte anpassen:
+
+DB_HOST → Datenbankserver (z.B. localhost oder 612bjf.myd.infomaniak.com)
+DB_NAME → Name der Datenbank
+DB_USER → Datenbankbenutzer
+DB_PASS → Datenbankpasswort
+
+5. *Audio-Dateien*  
+Audio-Dateien (.mp3) in den Ordner audio/ auf dem Server ablegen. Dateinamen müssen mit den Einträgen in der stories.audio_path Spalte auf der Datenbank übereinstimmen.
+
+6. *Wie nehme ich das physische Artefakt in Betrieb?*
+??
+Box mit User-Profil verknüpfen: Profil-Seite öffnen → Box-Code eingeben → Verknüpfen.
+Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
+
+## technische Details
+
+// Hier sollte das Verständnis ersichtlich sein / Wie stehen die Dateien in Beziehung zueinander, Wie reden Die Dateien miteinander, Wie ist der Weg der Daten
+
+* **Projektstruktur / Code-Struktur:** \[*Hinweis: Der Code selbst muss im Repository liegen und im Kopfbereich jeder Datei eine kurze Zusammenfassung enthalten.*\]  
+
+Schleich/
+│
+├── index.html              ← Hauptseite: Sensordata - wann hat das baby geweint? (Charts + Tabelle)
+├── login.html              ← Login-Formular
+├── register.html           ← Registrierungs-Formular
+├── settings.html           ← Playlist-Verwaltung
+├── profile.html            ← Profil, Geräte verbinden, Logout
+│
+├── js/
+│   ├── login.js            ← Login-Formular absenden
+│   ├── register.js         ← Registrierung absenden
+│   ├── index.js            ← Sensordata laden (wann das Baby geweint hat), Charts rendern
+│   ├── settings.js         ← Tracks laden, Auswahl toggeln
+│   └── profile.js          ← Profil laden, Geräte verwalten, Logout
+│
+├── css/
+│   ├── design_system.css   ← Design Tokens (Farben, Schriften, Abstände)
+│   ├── style.css           ← Hauptstyles (Layout, Typografie, Charts)
+│   ├── nav.css             ← Bottom-Navigation & Profil-Shortcut
+│   ├── login_register.css  ← Styles für Login/Register-Seiten
+│   ├── profile.css         ← Styles für Profil-Seite
+│   └── scoreboard.css      ← Tabellen-Styles
+│
+├── api/                    ← ⭐ Alle Backend-Endpoints (geben JSON zurück)
+│   ├── auth/
+│   │   ├── auth.php        ← Session prüfen ("Bin ich eingeloggt?")
+│   │   ├── login.php       ← Login verarbeiten
+│   │   ├── register.php    ← Registrierung verarbeiten
+│   │   └── logout.php      ← Session zerstören
+│   ├── device/
+│   │   ├── connect_device.php     ← Gerät mit Code verbinden
+│   │   ├── disconnect_device.php  ← Gerät trennen
+│   │   └── list_devices.php        ← Geräte des Users auflisten
+│   ├── profile/
+│   │   ├── read_profile.php        ← Profildaten laden
+│   │   └── update_profile.php      ← Namen ändern
+│   ├── tracks/
+│   │   ├── read_tracks.php        ← Alle Tracks mit Auswahl laden
+│   │   └── update_selected_tracks.php ← Track-Auswahl ändern
+│   └── sensordata/
+│       ├── read_sensordata.php        ← Sensordata laden (wann hat das Baby geweint?)
+
+│
+├── system/
+│   ├── config.php.blank    ← Vorlage für DB-Konfiguration
+│   ├── config.php          ← Echte DB-Zugangsdaten (gitignored!)
+│   └── setup.sql           ← Datenbank-Schema + Seed-Daten
+│
+└── assets/
+    └── background.jpg      ← Hintergrundbild für Login/Register
+```
+
+
+* **Datenschnittstelle: \[***zwischen WebApp und Physical Computing*\]  
+- NFC-Figur wird auf Box gestellt → Microcontroller erkennt NFC-Tag 
+- Hardware schreibt Eintrag in Tabelle sensordata (figure_id + device_id + Zeitstempel) 
+- Browser pollt alle 3 Sekunden api/sensor/poll_story.php
+- PHP prüft: gibt es neuen sensordata-Eintrag für eine Box dieses Users?
+- figure_id → figures → animal_id → zufällige Story aus stories
+- play_count in user_story_progress wird um 1 erhöht (oder neu angelegt)
+- Story-Daten werden als JSON an den Browser zurückgegeben
+- Audio-Player Overlay erscheint automatisch und spielt die Geschichte ab
+
+* **ERM:** \[*Erklärung und Schaubild*\]  
+Hauptbeziehungen:
+users → boxes (1:n, ein User hat mehrere Boxen)
+animals → figures (1:n, ein Tier hat mehrere Figuren)
+animals → stories (1:n, ein Tier hat mehrere Geschichten)
+sensordata → figures (n:1, via figure_id = serial_id)
+sensordata → boxes (n:1, via device_id = serial_id)
+users ↔ stories (n:m via user_story_progress, mit play_count)
+
+* **Authentifizierung:** \[*Erklärung*\]
+Session-basiert (PHP Sessions mit session_start() in config.php)
+Login speichert user_id in $_SESSION
+Jeder API-Endpoint prüft isset($_SESSION['user_id']), sonst HTTP 401
+Browser prüft via api/auth/auth.php – bei 401 Redirect zu login.html
+Logout: session_destroy() + Redirect
+
+## Known bugs
+* Was funktioniert noch nicht einwandfrei? 
+Autoplay blockiert: Browser blockieren Audio-Autoplay ohne vorherige User-Interaktion. Player erscheint, User muss manuell Play drücken.
+
+* Was könnte noch verbessert werden?
+ Polling-Delay: 3-Sekunden-Intervall bedeutet bis zu 3 Sek. Verzögerung nach NFC-Kontakt. Es gäbe vielleicht andere Lösungsansätze, wie ohne Verzögerung nach NFC Kontakt, eine Geschichte abgespielt wird
+
+
+## Umsetzungsprozess
+
+* **Reflexion / Erfahrung / Lernfortschritt:** *Was haben wir gelernt? Würden wir es nochmal genauso machen? Was war gut, was war schlecht?*  
+
+
+Lernfortschritt: Datenbank Verständnis. Intensiv damit auseinandergesetzt, welche Tabellen für dieses Projekt nötig sind und warum und welche Verknüpfungen sie untereinander haben müssen.
+
+
+* **Herausforderungen & Lösungen:** \[*Verworfene Ansätze, Fehler, Umplanungen*\]  
+
+
+
+* **KI-Einsatz:** *Dokumentation der verwendeten KI-Tools und deren Nutzen (KI ist nicht verboten)*  
+Claude wurde eingesetzt für: Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging.
+Konkret generiert mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php.
+
+Wir haben jeweils viel Zeit in das Prompten investiert, und dabei genau überlegt: Wie funktioniert unsere Website? Wie steht sie in Verbindung mit der DB, und wann muss wo was abgefragt werden. Danach war der KI-Einsatz sehr hilfreich, weil es uns ermöglichte, schnell und effizient zu coden.
+
+
+* **Fazit:** …
+
+
 
 ## Inhaltsverzeichnis
 
@@ -27,295 +203,15 @@ Die App dient gleichzeitig als **Lernprojekt**, um die folgenden Konzepte zu ver
 
 ---
 
-## 1. Architektur-Überblick
-
-Die App besteht aus zwei klar getrennten Teilen:
-
-```
-┌─────────────────────────────┐       HTTP (fetch)       ┌──────────────────────────────┐
-│         FRONTEND            │ ◄──────────────────────►  │          BACKEND             │
-│                             │                           │                              │
-│  HTML-Seiten (login.html,   │   GET / POST Requests     │  PHP-Dateien unter api/      │
-│  index.html, settings.html) │   mit JSON als Antwort    │  Gibt JSON zurück            │
-│                             │                           │                              │
-│  JavaScript (login.js,      │                           │  Spricht mit der Datenbank   │
-│  index.js, settings.js)     │                           │  (MySQL via PDO)             │
-│                             │                           │                              │
-│  CSS (design_system.css,    │                           │  Verwaltet Sessions          │
-│  style.css, nav.css)        │                           │  (Authentication)            │
-└─────────────────────────────┘                           └──────────────────────────────┘
-```
-
-**Das Prinzip:** Das Frontend (HTML/JS/CSS) läuft im Browser des Users. Wenn Daten gebraucht werden (z.B. "Zeige mir die Statistik, wann das Baby geweint hat"), schickt JavaScript einen `fetch()`-Request an eine PHP-Datei im `api/`-Ordner. Diese PHP-Datei holt die Daten aus der Datenbank und gibt sie als **JSON** zurück. JavaScript empfängt das JSON und rendert die Daten ins HTML.
-
----
-
-## 2. Warum Frontend und Backend trennen?
-
-### Der "alte" Weg: Alles in PHP
-
-Früher hat man oft alles in einer einzigen PHP-Datei gemacht - HTML, Logik und Datenbankabfragen gemischt:
-
-```php
-<!-- ❌ So NICHT - alles vermischt -->
-<?php
-session_start();
-$pdo = new PDO(...);
-$stmt = $pdo->query("SELECT * FROM tracks");
-$tracks = $stmt->fetchAll();
-?>
-<html>
-<body>
-  <table>
-    <?php foreach ($tracks as $track): ?>
-      <tr><td><?= $track['title'] ?></td></tr>
-    <?php endforeach; ?>
-  </table>
-</body>
-</html>
-```
-
-Das funktioniert zwar, hat aber Nachteile:
-
-| Problem                    | Erklärung                                                                     |
-| -------------------------- | ----------------------------------------------------------------------------- |
-| **Unübersichtlich**        | HTML und PHP-Logik sind vermischt, schwer zu lesen                            |
-| **Schwer wartbar**         | Änderungen am Design erfordern, dass man PHP-Code anfasst                     |
-| **Nicht wiederverwendbar** | Die Daten sind an das HTML gebunden - eine Mobile-App könnte sie nicht nutzen |
-| **Kein klarer Vertrag**    | Es gibt keine definierte Schnittstelle zwischen Frontend und Backend          |
-
-### Der moderne Weg: API-basiert (wie in diesem Projekt)
-
-```
-Frontend (HTML + JS)  ──fetch()──►  Backend (PHP API)  ──SQL──►  Datenbank
-                      ◄──JSON────
-```
-
-```javascript
-// ✅ So machen wir es - klare Trennung
-const response = await fetch("api/tracks/read.php");
-const tracks = await response.json();
-
-// Jetzt können wir die Daten beliebig darstellen
-tracks.forEach((track) => {
-  const row = document.createElement("tr");
-  row.innerHTML = `<td>${track.title}</td>`;
-  tbody.appendChild(row);
-});
-```
-
-**Vorteile:**
-
-| Vorteil                 | Erklärung                                                                                |
-| ----------------------- | ---------------------------------------------------------------------------------------- |
-| **Klare Trennung**      | Frontend kümmert sich um Darstellung, Backend um Daten & Logik                           |
-| **Wiederverwendbar**    | Die gleiche API könnte von einer Mobile-App, einem anderen Frontend, etc. genutzt werden |
-| **Einfacher zu testen** | Man kann die API unabhängig vom Frontend testen (z.B. mit Postman)                       |
-| **Paralleles Arbeiten** | Ein Team arbeitet am Frontend, ein anderes am Backend                                    |
-| **Industrie-Standard**  | So arbeiten professionelle Teams heute                                                   |
-
-### Was ist JSON?
-
-JSON (JavaScript Object Notation) ist das Standard-Datenformat für die Kommunikation zwischen Frontend und Backend:
-
-```json
-{
-  "status": "success",
-  "user_id": 42,
-  "email": "anna@example.com"
-}
-```
-
-Jede PHP-Datei im `api/`-Ordner setzt `header('Content-Type: application/json')` und gibt mit `json_encode()` ein JSON-Objekt zurück. Im JavaScript wird dieses mit `response.json()` geparst.
-
----
-
-## 3. Authentication (Login-System) erklärt
-
-Authentication (kurz "Auth") beantwortet die Frage: **"Wer bist du?"** - Es stellt sicher, dass nur registrierte Benutzer auf geschützte Seiten zugreifen können.
 
 ### 3.1 Die Grundidee: Sessions & Cookies
 
-HTTP ist **zustandslos** (stateless) - der Server vergisst nach jedem Request, wer du bist. Damit er sich trotzdem "merken" kann, dass du eingeloggt bist, nutzen wir **Sessions**:
 
-```
 1. Du loggst dich ein (Email + Passwort)
 2. Der Server erstellt eine Session (eine Art Gedächtnis) und speichert deine User-ID darin
 3. Der Server schickt dir ein Session-Cookie (eine kleine ID) zurück
 4. Bei jedem weiteren Request schickt dein Browser dieses Cookie automatisch mit
 5. Der Server liest das Cookie, findet die Session, und weiss wieder wer du bist
-```
-
-```
-Browser                              Server
-  │                                     │
-  │  POST /api/auth/login.php           │
-  │  email=anna@test.ch&password=123    │
-  │ ──────────────────────────────────► │
-  │                                     │  ✓ Passwort stimmt!
-  │                                     │  Session erstellen: { user_id: 42 }
-  │  Set-Cookie: PHPSESSID=abc123       │
-  │ ◄────────────────────────────────── │
-  │                                     │
-  │  GET /api/sensordata/read_sensordata.php      │
-  │  Cookie: PHPSESSID=abc123           │  (Browser schickt Cookie automatisch)
-  │ ──────────────────────────────────► │
-  │                                     │  Session "abc123" → user_id: 42
-  │                                     │  → Daten für User 42 laden
-  │  [{ starttime: "...", ... }]        │
-  │ ◄────────────────────────────────── │
-```
-
-### 3.2 Registrierung (Schritt für Schritt)
-
-**Frontend:** `register.html` + `js/register.js`
-**Backend:** `api/auth/register.php`
-
-#### Was passiert, wenn jemand auf "Registrieren" klickt?
-
-**1. JavaScript fängt das Formular ab:**
-
-```javascript
-// register.js
-document
-  .getElementById("registerForm")
-  .addEventListener("submit", async (e) => {
-    e.preventDefault(); // Verhindert normales Absenden (Seite würde neu laden)
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    const response = await fetch("api/auth/register.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ name, email, password }),
-    });
-    const result = await response.json();
-
-    if (result.status === "success") {
-      window.location.href = "login.html"; // Weiterleitung zum Login
-    }
-  });
-```
-
-**2. PHP empfängt die Daten und verarbeitet sie:**
-
-```php
-// api/auth/register.php
-// 1. Email-Duplikat prüfen
-$stmt = $pdo->prepare("SELECT id FROM users WHERE email = :email");
-$stmt->execute([':email' => $email]);
-if ($stmt->fetch()) {
-    echo json_encode(["status" => "error", "message" => "Email is already in use"]);
-    exit;
-}
-
-// 2. Passwort hashen (NIEMALS Klartext speichern!)
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-// 3. User in Datenbank einfügen
-$insert = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :pass)");
-$insert->execute([':name' => $name, ':email' => $email, ':pass' => $hashedPassword]);
-```
-
-#### Warum `password_hash()`?
-
-Passwörter werden **niemals im Klartext** in der Datenbank gespeichert. `password_hash()` erstellt einen sogenannten **Hash** - eine Einweg-Verschlüsselung:
-
-```
-Eingabe:  "meinPasswort123"
-Hash:     "$2y$10$Xk3c8r2jF..."  (ca. 60 Zeichen, nicht umkehrbar)
-```
-
-Selbst wenn jemand die Datenbank hackt, kann er die Passwörter nicht lesen. Beim Login wird `password_verify()` verwendet, um zu prüfen, ob das eingegebene Passwort zum Hash passt.
-
-### 3.3 Login (Schritt für Schritt)
-
-**Frontend:** `login.html` + `js/login.js`
-**Backend:** `api/auth/login.php`
-
-#### Was passiert beim Login?
-
-**1. JavaScript sendet Email und Passwort:**
-
-```javascript
-// login.js
-const response = await fetch("api/auth/login.php", {
-  method: "POST",
-  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  body: new URLSearchParams({ email, password }),
-});
-```
-
-**2. PHP prüft die Credentials:**
-
-```php
-// api/auth/login.php
-// 1. User in DB suchen
-$stmt = $pdo->prepare("SELECT id, password FROM users WHERE email = :email");
-$stmt->execute([':email' => $email]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// 2. Passwort verifizieren
-if ($user && password_verify($password, $user['password'])) {
-    // 3. Session starten und User-Daten speichern
-    session_regenerate_id(true);          // Neue Session-ID (Sicherheit)
-    $_SESSION['user_id'] = $user['id'];   // User-ID merken
-    $_SESSION['email'] = $email;          // Email merken
-
-    echo json_encode(["status" => "success"]);
-} else {
-    echo json_encode(["status" => "error", "message" => "Invalid credentials"]);
-}
-```
-
-#### Warum `session_regenerate_id(true)`?
-
-Dies schützt vor **Session Fixation Attacks**. Nach dem Login bekommt der User eine neue Session-ID, damit ein Angreifer nicht eine alte, bekannte Session-ID ausnutzen kann.
-
-### 3.4 Auth-Check: Geschützte Seiten absichern
-
-Jede geschützte Seite (index.html, settings.html, profile.html) prüft beim Laden, ob der User eingeloggt ist:
-
-**Frontend (wird auf jeder geschützten Seite aufgerufen):**
-
-```javascript
-// Diese Funktion steht in index.js, settings.js und profile.js
-async function checkAuth() {
-  const response = await fetch("api/auth/auth.php", {
-    credentials: "include", // Cookie mitsenden!
-  });
-
-  if (response.status === 401) {
-    window.location.href = "login.html"; // Nicht eingeloggt → Redirect
-    return false;
-  }
-
-  const result = await response.json();
-  if (result.error || !result.email) {
-    window.location.href = "login.html";
-    return false;
-  }
-  return true;
-}
-```
-
-**Backend (`api/auth/auth.php`):**
-
-```php
-session_start();
-
-if (!isset($_SESSION['user_id'])) {
-    http_response_code(401);
-    echo json_encode(["error" => "Unauthorized"]);
-    exit;
-}
-
-echo json_encode([
-    "email" => $_SESSION['email'],
-    "user_id" => $_SESSION['user_id']
-]);
 ```
 
 **Der Ablauf:**
@@ -396,57 +292,7 @@ session_destroy();    // Session komplett zerstören
 ## 4. Projektstruktur
 
 ```
-heulradar/
-│
-├── index.html              ← Hauptseite: Sensordata - wann hat das baby geweint? (Charts + Tabelle)
-├── login.html              ← Login-Formular
-├── register.html           ← Registrierungs-Formular
-├── settings.html           ← Playlist-Verwaltung
-├── profile.html            ← Profil, Geräte verbinden, Logout
-│
-├── js/
-│   ├── login.js            ← Login-Formular absenden
-│   ├── register.js         ← Registrierung absenden
-│   ├── index.js            ← Sensordata laden (wann das Baby geweint hat), Charts rendern
-│   ├── settings.js         ← Tracks laden, Auswahl toggeln
-│   └── profile.js          ← Profil laden, Geräte verwalten, Logout
-│
-├── css/
-│   ├── design_system.css   ← Design Tokens (Farben, Schriften, Abstände)
-│   ├── style.css           ← Hauptstyles (Layout, Typografie, Charts)
-│   ├── nav.css             ← Bottom-Navigation & Profil-Shortcut
-│   ├── login_register.css  ← Styles für Login/Register-Seiten
-│   ├── profile.css         ← Styles für Profil-Seite
-│   └── scoreboard.css      ← Tabellen-Styles
-│
-├── api/                    ← ⭐ Alle Backend-Endpoints (geben JSON zurück)
-│   ├── auth/
-│   │   ├── auth.php        ← Session prüfen ("Bin ich eingeloggt?")
-│   │   ├── login.php       ← Login verarbeiten
-│   │   ├── register.php    ← Registrierung verarbeiten
-│   │   └── logout.php      ← Session zerstören
-│   ├── device/
-│   │   ├── connect_device.php     ← Gerät mit Code verbinden
-│   │   ├── disconnect_device.php  ← Gerät trennen
-│   │   └── list_devices.php        ← Geräte des Users auflisten
-│   ├── profile/
-│   │   ├── read_profile.php        ← Profildaten laden
-│   │   └── update_profile.php      ← Namen ändern
-│   ├── tracks/
-│   │   ├── read_tracks.php        ← Alle Tracks mit Auswahl laden
-│   │   └── update_selected_tracks.php ← Track-Auswahl ändern
-│   └── sensordata/
-│       ├── read_sensordata.php        ← Sensordata laden (wann hat das Baby geweint?)
 
-│
-├── system/
-│   ├── config.php.blank    ← Vorlage für DB-Konfiguration
-│   ├── config.php          ← Echte DB-Zugangsdaten (gitignored!)
-│   └── setup.sql           ← Datenbank-Schema + Seed-Daten
-│
-└── assets/
-    └── background.jpg      ← Hintergrundbild für Login/Register
-```
 
 ### Die API-Ordnerstruktur folgt einem Muster:
 
