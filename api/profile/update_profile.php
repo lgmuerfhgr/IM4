@@ -6,8 +6,7 @@
 * - Empfängt JSON-Daten mit name
 * - Gibt JSON-Antwort zurück
 *
-* verwendete Datenbanktabellen:
-* users
+* verwendete Datenbanktabellen: users
 *********************************************************/
 
 header('Content-Type: application/json');

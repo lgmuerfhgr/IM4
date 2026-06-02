@@ -1,4 +1,14 @@
 <?php
+/*********************************************************
+ * api/stories/get-stories.php
+ * - Prüft Session und User-Authentifizierung
+ * - Lädt alle freigeschalteten Stories des eingeloggten Users
+ * - Sortiert nach Wiedergaben (absteigend) und Titel (A–Z)
+ * - Gibt Story-Liste als JSON zurück
+ *
+ * verwendete Datenbanktabellen:
+ * stories, user_story_progress
+ *********************************************************/
 
 header('Content-Type: application/json');
 include_once '../../system/config.php';

@@ -87,7 +87,6 @@ Schleich/
 ├── profile.html            ← Profil, Box verbinden, Logout
 ├── register.html           ← Registrierungs-Formular
 ├── story.html              ← Unterseite: Story mit Titel, Audio
-
 │
 ├── js/
 │   ├── index.js            ← lädt/sortiert freigeschaltete Geschichten nach play_count
@@ -97,40 +96,40 @@ Schleich/
 │   └── profile.js          ← Profil laden, Geräte verwalten, Logout
 │
 ├── css/
-│   ├── design.css          ← Farben und responsivness
-│   ├── style.css           ← Hauptstyles (Layout, Typografie, Charts)
-│   ├── nav.css             ← Bottom-Navigation & Profil-Shortcut
-│   ├── login_register.css  ← Styles für Login/Register-Seiten
-│   ├── profile.css         ← Styles für Profil-Seite
-│   └── scoreboard.css      ← Tabellen-Styles
+│   ├── auto-player.css     ← Styles für den automatisch erscheinenden Audio-Player beim Erkennen einer Tierfigur
+│   ├── design.css          ← Allgemeine Farben und Responsivness
+│   ├── login.css           ← Styles für login.html
+│   ├── loginpage.css       ← Styles für loginpage.html
+│   ├── profile.css         ← Styles für profile.html
+│   └── register.css        ← Styles fpr register.html
+│   ├── style.css           ← styles index.html 
 │
-├── api/                    ← ⭐ Alle Backend-Endpoints (geben JSON zurück)
+├── api/
 │   ├── auth/
 │   │   ├── auth.php        ← Session prüfen ("Bin ich eingeloggt?")
 │   │   ├── login.php       ← Login verarbeiten
 │   │   ├── register.php    ← Registrierung verarbeiten
 │   │   └── logout.php      ← Session zerstören
 │   ├── device/
-│   │   ├── connect_device.php     ← Gerät mit Code verbinden
-│   │   ├── disconnect_device.php  ← Gerät trennen
-│   │   └── list_devices.php        ← Geräte des Users auflisten
+│   │   ├── connect_device.php     ← Box mit User verbinden
+│   │   ├── disconnect_device.php  ← Box mit User trennen
 │   ├── profile/
 │   │   ├── read_profile.php        ← Profildaten laden
 │   │   └── update_profile.php      ← Namen ändern
-│   ├── tracks/
-│   │   ├── read_tracks.php        ← Alle Tracks mit Auswahl laden
-│   │   └── update_selected_tracks.php ← Track-Auswahl ändern
-│   └── sensordata/
-│       ├── read_sensordata.php        ← Sensordata laden (wann hat das Baby geweint?)
-
+│   ├── sensor/
+│   │   ├── poll_story.php        ← Alle 3sek DB-Abfrage nach neuem Eintrag in sensordata-Tabelle
+│   └── stories/
+│       ├── read_story.php           ← lädt Story bei Unterseite story.html
+│       ├── read_user_stories.php    ← lädt alle freigeschalteten Stories und stortiert sie nach Wiedergabe
 │
 ├── system/
-│   ├── config.php.blank    ← Vorlage für DB-Konfiguration
 │   ├── config.php          ← Echte DB-Zugangsdaten (gitignored!)
-│   └── setup.sql           ← Datenbank-Schema + Seed-Daten
+│   └── 612bjf_im4.sql      ← Datenbank-Struktur
 │
-└── assets/
-    └── background.jpg      ← Hintergrundbild für Login/Register
+├── assets/
+│   └── Tiere Illustrationen und User und Story Menüsymbol
+├── audio/  
+│   └── alle mp3 Audio Dateien der Stories
 ```
 
 

@@ -1,4 +1,14 @@
 <?php
+/*********************************************************
+ * api/stories/get-story.php
+ * - Prüft Session und User-Authentifizierung
+ * - Lädt eine Story
+ * - Gibt Story-Daten nur zurück wenn sie dem User freigeschaltet ist
+ *
+ * verwendete Datenbanktabellen:
+ * stories, user_story_progress
+ *********************************************************/
+
 // JSON-Header und DB-Verbindung laden
 header('Content-Type: application/json');
 include_once '../../system/config.php';
