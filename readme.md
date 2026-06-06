@@ -100,14 +100,60 @@ Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
 #### Bauanleitung Physical Computing
 
 * ***Was muss ich wie bauen, verbinden, installieren?***  
-* *ergänze: **Komponentenplan** (betrifft Physical Computing, vgl. Slides Kapitel 15): Schaubild enthält*  
+Wir müssen es schaffen, dass der NFC-Tag erkannt wird vom NFC-Reader und das Signal in der Datenbank erschient. 
+Das Signal muss dann einer Tier-ID zugewiesen werden damit es weiterverarbeitet werden kann.
+
+* **Komponentenplan**  
   * *die eingesetzten Komponenten*  
-  * *die verbundenen Sensoren und Aktoren*  
+  - Mikrocontroller-Board: ESP32-C6-N8 ← Verarbeitet die Signale des Readers und sendet sie über das integrierte WLAN-Modul an den Webserver
+  - NFC/RFID-Lesegerät: PN532 Reader   ← Erzeugt das elektromagnetische Feld, um Daten von den NFC-Transpondern abzufragen
+  - NFC-Transponder: NFC-Tags          ← Mobile Datenträger, auf denen die eindeutige Tier-ID dauerhaft gespeichert ist
+  - Stromversorgung: Batterie mit 5V   ← Liefert die nötige elektrische Energie für den mobilen Betrieb der Hardware
+  - Prototyping-Plattform: Steckplatte ← Ermöglicht das lötfreie Aufstecken, Fixieren und elektrische Verschalten der Bauteile
+  - Verbindungsleitungen: Jumperkabel  ← in den Farben Rot, Grün und Gelb. Verbinden die Pins der Komponenten flexibel mit der Steckplatte
+  - Visualisierung Miro-Board: 
+   https://miro.com/app/board/uXjVHIibNBw=/?share_link_id=924320853277
+
+
+  * *die verbundenen Sensoren und Aktoren*
+Sensoren: 
+- NFC/RFID Reader PN532: Fungiert als digitaler Sensor. Er scannt berührungslos die Umgebung und liest die Tier-ID aus, sobald sich ein NFC-Tag im Radius befindet.
+
+Aktoren:
+- Physische Hardware: Keine direkten Aktoren (wie Motoren oder LEDs) am ESP32-Board angeschlossen.
+- Logisches Gesamtsystem: Das Web-Frontend (Browser) übernimmt die Funktion des Aktors. Gesteuert durch die Datei js/story.js setzt es das empfangene Datenbanksignal in eine physikalische Aktion um, indem es die passende .mp3-Audiodatei über die Lautsprecher wiedergibt.
+
+
   * *die Programme (mit Dateinamen)*  
-  * *die Kommunikationswege*  
-* *ergänze: **Steckplan** (betrifft Physical Computing, vgl. Slides Kapitel 15): generiert z.B. mit Fritzing (empfohlen), Tinkercad, Wokwi*  
-  * *beachtet die [Fritzing Parts](https://github.com/Interaktive-Medien/im_physical_computing/tree/main/15_Intro_Projektdoku) extra für euch*  
-* *ggf. **Bildmaterial***
+  - `mc.ino` ← Läuft auf dem ESP32-C6-N8. Liest die UID des NFC-Tags über den PN532-Reader aus und sendet sie per HTTP an den Webserver
+  - `load.php` ← Empfängt die JSON-Daten vom ESP32 per HTTP und schreibt die Figuren-ID per SQL in die Datenbank
+  - `config.php` ← Zentrale Konfigurationsdatei; stellt die Datenbankverbindung für alle PHP-Dateien bereit
+  - `api/sensor/poll_story.php` ← Wird regelmässig vom Frontend aufgerufen. Erkennt neue NFC-Scans, übersetzt die Figuren-ID in eine zufällige Story und gibt diese als JSON zurück
+  - `story.html` ← Frontend-Seite, auf der die Story abgespielt wird
+  - `js/story.js` ← Ruft regelmässig `poll_story.php` ab und spielt die passende Audiodatei ab
+
+
+  * *die Kommunikationswege* 
+NFC-Tag ⇄ NFC/RFID ReaderPN532
+- Weg: Kabellos über elektromagnetische Induktion 
+- Daten: Der Reader erfasst die auf dem Tag hinterlegte ID (figure_id)
+
+NFC/RFID Reader PN532 ⇄ Microcontrollerboard ESP32-C6-N8
+- Weg: Kabelgebunden über die Jumperkabel auf der Steckplatte
+- Protokoll: Physische serielle Schnittstelle
+
+ESP32-C6-N8 ⇄ Webserver / API (api/sensor/)
+- Weg: Drahtlos über das lokale WLAN-Netzwerk an das Internet/Backend
+- Protokoll: Das ESP32-Board sendet die ausgelesene figure_id per HTTP-POST an write_sensordata_into_db.h, welches die ID direkt in die Tabelle sensordata der Datenbank einträgt
+
+Datenbank ⇄ Frontend (Benutzeroberfläche)
+- Weg: Interner Server- und Netzwerkdatenfluss
+- Protokoll: Das Skript api/sensor/poll_story.php fragt die Datenbank ab. Die Weboberfläche (z. B. gesteuert durch js/index.js oder js/story.js) holt sich diese Daten ab, ordnet die ID dem jeweiligen Tier zu und lädt die entsprechende Story aus dem audio/-Ordner.
+
+* **Steckplan**
+![Alternativtext](asset/physco/im4-steckplan-bild.png)
+![Alternativtext](asset/physco/im4-steckplan.png)
+
 
 
 ## Technische Details
