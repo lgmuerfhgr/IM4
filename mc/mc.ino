@@ -26,8 +26,8 @@
 Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET, &Wire);
 
 // WLAN & Server
-const char* ssid      = "tinkergarden";
-const char* pass      = "strenggeheim";
+const char* ssid      = "Zyxel_63E9";
+const char* pass      = "7f3tj3n4e4p4n3x8";
 const char* serverURL = "https://im4.im-hs26.ch/api/load.php";
 
 bool isWlanConnected = false;
