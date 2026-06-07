@@ -95,6 +95,14 @@ h2 {
   font-weight: 800;
 }
 
+.empty-state {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-black);
+  text-align: center;
+  max-width: 450px;
+}
+
 .story-list {
   display: flex;
   flex-direction: column;
