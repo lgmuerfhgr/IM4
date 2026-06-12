@@ -1,14 +1,12 @@
 /******************************************************************
  * 09_NFC_RFID-Reader.ino
- * Read NFC tags and RFID cards (I2C mode)
- * turn on I2C mode by switching physical switches on the PN532 to 1 / 0 (I2C)
- * Anschluss:
- * PN532: SDA <-> ESP32-C6: GPIO 6
- * PN532: SCL <-> ESP32-C6: GPIO 7
- * PN532: Vcc <-> ESP32-C6: 3.3V
- * PN532: GND <-> ESP32-C6: GND
- * Installiere Library "Adafruit_PN532" von Adafruit
-********************************************************************/
+ * Verbindet ESP32-C6 mit PN532 NFC-Reader via I2C
+ * Scannt alle 250ms nach NFC-Tags/RFID-Karten
+ * Liest die Tag-UID aus und wandelt sie in Hex-String um (z.B. A3F20C1B)
+ * Gibt die ID einmalig über Serial aus
+ * Sperrt dieselbe ID für 5 Sekunden (kein Spam)
+ * Non-blocking dank millis() statt delay()
+ ********************************************************************/
 
 
 #include <Wire.h>

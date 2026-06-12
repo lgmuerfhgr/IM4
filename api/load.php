@@ -4,6 +4,10 @@
  * Kapitel 12: Website2DB > Schritt 2: Website -> DB
  * load.php
  * JSON-Daten vom MC empfangen und in die Datenbank einfügen
+ * JSON-Body vom ESP32 empfangen
+ * wert (Tag-UID) und device_id auslesen
+ * Beides per INSERT in Tabelle sensordata schreiben
+ * figure_id = Tag-UID, device_id = z.B. "box_001"
  ****************************************************/
 
 require_once("../system/config.php");

@@ -1,14 +1,13 @@
  /******************************************************************************************
  * Kap. 13: Sende NFC-Tag UID an Server
  * mc.ino
- * Libraries: "Arduino_JSON" by Arduino, "Adafruit_PN532" by Adafruit
- * PN532 im I2C-Modus (Schalter: 1/0)
- * Anschluss:
- *   PN532 SDA <-> ESP32-C6: GPIO 6
- *   PN532 SCL <-> ESP32-C6: GPIO 7
- *   PN532 Vcc <-> ESP32-C6: 3.3V
- *   PN532 GND <-> ESP32-C6: GND
- * Passe serverURL, SSID und Passwort an.
+ * WLAN verbinden (mit Auto-Reconnect)
+ * LED zeigt Status: rot = kein WLAN, grün = verbunden
+ * Alle 250ms nach NFC-Tag scannen
+ * Tag-UID → HEX-String umwandeln
+ * 5s Sperre für denselben Tag
+ * Tag-ID als JSON per HTTP POST an Server schicken
+ * device_id: "box_001" wird mitgeschickt
  ******************************************************************************************/
 
 #include <WiFi.h>
