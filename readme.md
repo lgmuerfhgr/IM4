@@ -199,18 +199,27 @@ Schleich/
 │   ├── sensor/
 │   │   └── poll_story.php         ← alle 3 Sek. DB-Abfrage nach neuem Eintrag in sensordata
 │   └── stories/
-│       ├── read_story.php         ← lädt einzelne Story für story.html
-│       └── read_user_stories.php  ← lädt alle freigeschalteten Stories, sortiert nach Wiedergabe
+│   │   ├── read_story.php         ← lädt einzelne Story für story.html
+│   │   └── read_user_stories.php  ← lädt alle freigeschalteten Stories, sortiert nach Wiedergabe
+│   └── load.php                   ← JSON-Daten vom MC empfangen und in die Datenbank einfügen
 │
 ├── system/
 │   ├── config.php          ← DB-Zugangsdaten (gitignored!)
 │   └── 612bjf_im4.sql      ← Datenbank-Struktur und Testdaten
 │
 ├── assets/
-│   └── Tier-Illustrationen, Menü-Icons
+│   └── Tier-Illustrationen, Menü-Icons, Steckplan
 │
 └── audio/
-    └── alle .mp3 Audiodateien der Stories
+│   └── alle .mp3 Audiodateien der Stories
+│
+├── mc/
+│   ├── .vscode/                   ← Automatisch generiert von VS Code
+│   ├── 09_NFC_RFID-READER/
+│   │   ├── 09_NFC_RFID-READER.ino ← Liest NFC-Tags,gibt UID über Serial aus – Grundlage Datenbankanbindung
+│   ├── build/                     ← Ensteht bei Arduino Upload
+│   ├── mc.ino                     ← Baut auf dem 09_NFC_RFID-Reader.ino auf + erweitert um WLAN und HTTP.
+
 
 * **Datenschnittstelle: \[***zwischen WebApp und Physical Computing*\]  
 Physical Computing: 
