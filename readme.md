@@ -36,7 +36,7 @@ Beim Design haben wir zunächst mehrere zusätzliche Seiten und Funktionen gepla
 ### Setup
 
 * **WebApp:** [https://im4.im-hs26.ch/]
-* **Video-Dokumentation:** [Link zum Video auf Youtube](http://link.zum.video) 
+* **Video-Dokumentation:** [Link zum Video auf Youtube](https://f.io/Xujc4zop) 
 
 #### Installationsanleitung WebApp
 
@@ -111,8 +111,7 @@ Das Signal muss dann einer Tier-ID zugewiesen werden damit es weiterverarbeitet 
   - Stromversorgung: Batterie mit 5V   ← Liefert die nötige elektrische Energie für den mobilen Betrieb der Hardware
   - Prototyping-Plattform: Steckplatte ← Ermöglicht das lötfreie Aufstecken, Fixieren und elektrische Verschalten der Bauteile
   - Verbindungsleitungen: Jumperkabel  ← in den Farben Rot, Grün und Gelb. Verbinden die Pins der Komponenten flexibel mit der Steckplatte
-  - Visualisierung Miro-Board: 
-   https://miro.com/app/board/uXjVHIibNBw=/?share_link_id=924320853277
+  - Visualisierung Komponentenplan:    ← https://miro.com/app/board/uXjVHIibNBw=/?share_link_id=924320853277
 
 
   * *die verbundenen Sensoren und Aktoren*
@@ -267,14 +266,15 @@ Das 3-Sekunden-Intervall bedeutet bis zu 3 Sekunden Verzögerung nach NFC-Kontak
 Das WebApp Team
   Datenbankverständnis: Wir haben uns intensiv damit auseinandergesetzt, welche Tabellen für das Projekt nötig sind und  warum, und welche Verknüpfungen sie untereinander haben müssen. Ausserdem haben wir gelernt, wie eine WebApp mit einer Datenbank kommuniziert – via PHP API-Endpoints – und wie Session-basierte Authentifizierung funktioniert.
 Das Physical Computing Team
-  MUSS NOCH ERGÄNZT WERDEN 
+  Wir haben das Programm Arduino kennengelernt und wie man damit mit dem Microcontroller kommunizieren kann. Auch das Zusammenspiel von Senoren/Aktoren ist nun nachvollziehbar. Besonders spannend fanden wir, dass der Microcontroller übers WLAN kommunizieren kann.  
 
 * **Herausforderungen & Lösungen:** \[*Verworfene Ansätze, Fehler, Umplanungen*\]  
 WebApp Team
   Die Datenbankstruktur war eine echte Herausforderung: Die komplexe Idee musste auf das Wesentliche heruntergebrochen werden. Das hat Zeit gekostet, hat sich aber gelohnt. Die finale Struktur ist klar und nachvollziehbar. Durch dieses Verständnis konnten wir unser Projekt präziser beschreiben und bessere Prompts für die KI erstellen, was uns im weiteren Verlauf viel Zeit gespart hat.
 
 Das Physical Computing Team
-  MUSS NOCH ERGÄNZT WERDEN 
+  Da wir beide gar keien Berührungspunkt mit Physical Computing bisher hatten bestand die Herausforderung schon darin einen Stromkreislauf zu bilden. Mit der Zeit wurde es aber klarer und wir konntnen die Schritte nachvollziehen. 
+  Unser MC hat jedoch einigemale gebuggt und wir mussten ihn reseten sowie den anderen Port (nicht Family Device) verwenden. Daraus konnten wir lernen, wie den MC zurückzustezen und die Fehlercodes, die im Arduino angezeigt wurden besser zu verstehen.
 
 Allgemein
   Es war  ursprünglich vorgesehen, die Geschichten direkt auf einer Musikbox abzuspielen und dort zu speichern, sodass die Nutzung vollständig ohne Bildschirm möglich ist. Doch wegen der Komplexität, entschieden wir uns für eine vereinfachte Lösung über die WebApp.
@@ -284,7 +284,9 @@ Das WebApp Team
   Wir haben jeweils viel Zeit in das Prompten investiert, und dabei genau überlegt: Wie funktioniert unsere Website? Wie steht sie in Verbindung mit der DB, und wann muss wo was abgefragt werden? Danach war der KI-Einsatz sehr hilfreich, weil es uns ermöglichte, schnell und effizient zu coden.
   Wir setzten Claude ein für Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging. Konkret generierten wir mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php
 Das Physical Computing Team
-MUSS NOCH ERGÄNZT WERDEN
+Wir haben mehrheitlich Jan gefrgat bei Problemen, da wir persönlicher Unterricht sehr schätzen. 
+Wenn wir KI gneutzt haben (Claude), dann um uns z.B. die Fehlermeldung im Arduino klarer erklären zu lassen und mögliche Lösungsansätze aufzuzeigen. Das hat oft sehr gut funktioniert. 
+Im Kapitel 13 haben wir mittel KI (Gemini) einen delay zum auslesen von NFC-Tag integriert.
 
 * **Fazit:** …
 Der Einstieg war etwas holprig. Doch die Entscheidung, die Geschichten auf der Website abzuspielen anstelle über eine physische Box, erleichterte unsere Arbeit enorm. Mithilfe von Claude und genauem Prompten ging es im Gesamten gut voran. Natürlich gab es Auf und Abs und etliche Debuggings, aber im Grossen und Ganzen sind wir happy mit dem Endresultat und würden beim nächsten Mal ähnlich vorgehen.
