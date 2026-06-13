@@ -1,3 +1,11 @@
+/*--------------------------------------------------------
+* js/story.js
+- Prüft ob der Benutzer eingeloggt ist, sonst Weiterleitung zu login.html
+- Lädt eine einzelne Geschichte anhand der URL-Parameter (id) via API
+- Schreibt Titel, Intro-Text, Tierbild (anhand animal_id) und Audio-Pfad ins DOM
+* benötigte API: api/auth/auth.php, api/stories/read_story.php
+--------------------------------------------------------*/
+
 async function checkAuth() {
   try {
     const response = await fetch("api/auth/auth.php", { credentials: "include" });

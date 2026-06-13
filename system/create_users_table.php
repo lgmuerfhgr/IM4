@@ -1,4 +1,11 @@
 <?php
+/*--------------------------------------------------------
+* create_users_table.php
+- Erstellt die Datenbanktabelle `users` falls sie noch nicht existiert
+- Felder: id, email (eindeutig), password, name
+* benötigt: config.php (PDO-Datenbankverbindung)
+--------------------------------------------------------*/
+
 declare(strict_types=1);
 
 header('Content-Type: text/plain; charset=utf-8');
