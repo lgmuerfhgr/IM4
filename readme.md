@@ -36,7 +36,7 @@ Beim Design haben wir zunächst mehrere zusätzliche Seiten und Funktionen gepla
 ### Setup
 
 * **WebApp:** [https://im4.im-hs26.ch/]
-* **Video-Dokumentation:** [Link zum Video auf Youtube](https://f.io/Xujc4zop) 
+* **Video-Dokumentation:** [https://f.io/Xujc4zop]() 
 
 #### Installationsanleitung WebApp
 
@@ -93,14 +93,13 @@ So geht's:
   2. Die Dateinamen müssen **exakt** mit den Einträgen in der Datenbankspalte `stories.audio_path` übereinstimmen – inklusive Gross-/Kleinschreibung.
 
 6. *Wie nehme ich das physische Artefakt in Betrieb?*
-?? MÜSSEN WIR NOCH AUSFÜLLEN
 Box mit User-Profil verknüpfen: Profil-Seite öffnen → Box-Code eingeben → Verknüpfen.
 Tierfigur auf Box stellen → Geschichte erscheint automatisch im Browser.
 
 #### Bauanleitung Physical Computing
 
 * ***Was muss ich wie bauen, verbinden, installieren?***  
-Wir müssen es schaffen, dass der NFC-Tag erkannt wird vom NFC-Reader und das Signal in der Datenbank erschient. 
+Wir müssen es schaffen, dass der NFC-Tag erkannt wird vom NFC-Reader und das Signal in der Datenbank erscheint. 
 Das Signal muss dann einer Tier-ID zugewiesen werden damit es weiterverarbeitet werden kann.
 
 * **Komponentenplan**  
@@ -282,7 +281,7 @@ WebApp Team
   Die Datenbankstruktur war eine echte Herausforderung: Die komplexe Idee musste auf das Wesentliche heruntergebrochen werden. Das hat Zeit gekostet, hat sich aber gelohnt. Die finale Struktur ist klar und nachvollziehbar. Durch dieses Verständnis konnten wir unser Projekt präziser beschreiben und bessere Prompts für die KI erstellen, was uns im weiteren Verlauf viel Zeit gespart hat.
 
 Das Physical Computing Team
-  Da wir beide gar keien Berührungspunkt mit Physical Computing bisher hatten bestand die Herausforderung schon darin einen Stromkreislauf zu bilden. Mit der Zeit wurde es aber klarer und wir konntnen die Schritte nachvollziehen. 
+  Da wir beide gar keine Berührungspunkt mit Physical Computing bisher hatten, bestand die Herausforderung schon darin einen Stromkreislauf zu bilden. Mit der Zeit wurde es aber klarer und wir konntnen die Schritte nachvollziehen. 
   Unser MC hat jedoch einigemale gebuggt und wir mussten ihn reseten sowie den anderen Port (nicht Family Device) verwenden. Daraus konnten wir lernen, wie den MC zurückzustezen und die Fehlercodes, die im Arduino angezeigt wurden besser zu verstehen.
 
 Allgemein
@@ -294,7 +293,7 @@ Das WebApp Team
   Wir setzten Claude ein für Struktur-Entscheidungen der Datenbank, Hilfe bei PHP und Javascript und Debugging. Konkret generierten wir mit KI: poll_story.php, index.js (Polling + Overlay), auto-player.css, connect_device.php, disconnect_device.php, read_profile.php
 Das Physical Computing Team
 Wir haben mehrheitlich Jan gefrgat bei Problemen, da wir persönlicher Unterricht sehr schätzen. 
-Wenn wir KI gneutzt haben (Claude), dann um uns z.B. die Fehlermeldung im Arduino klarer erklären zu lassen und mögliche Lösungsansätze aufzuzeigen. Das hat oft sehr gut funktioniert. 
+Wenn wir KI genutzt haben (Claude), dann um uns z.B. die Fehlermeldung im Arduino klarer erklären zu lassen und mögliche Lösungsansätze aufzuzeigen. Das hat oft sehr gut funktioniert. 
 Im Kapitel 13 haben wir mittel KI (Gemini) einen delay zum auslesen von NFC-Tag integriert.
 
 * **Fazit:** …
